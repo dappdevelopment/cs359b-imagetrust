@@ -1,4 +1,4 @@
-# CS359B Project (ADD NAME HERE)
+# CS359B Project ImageTrust
 
 (short description here)
 
