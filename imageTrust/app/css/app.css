@@ -1,0 +1,49 @@
+html	{
+	height: 100%;
+	}
+body	{
+	min-height: 100%;
+	background-color: #F0F0F0;
+	font-family: 'Raleway','Source Sans Pro', 'Arial'; 
+	}
+.container	{
+	height: 100%;
+	width: 100%;
+
+	}
+header	{
+	padding: 0.75em;
+    	color: white;
+    	background-color: black;
+    	clear: left;
+    	text-align: left;
+	}
+footer  {
+        padding: 0.5em;
+        color: white;
+        background-color: black;
+        clear: left;
+        text-align: center;
+        }    
+nav	{
+	height: 100%;
+	float: left;
+    	max-width: 160px;
+    	margin: 0;
+    	padding: 1em;
+	}
+
+nav ul {
+    	list-style-type: none;
+    	padding: 0;
+	}
+   
+nav ul a {
+    	text-decoration: none;
+	}
+.softwareValidation {
+	margin-left: 170px;
+    	border-left: 1px solid gray;
+    	padding: 1em;
+    	overflow: hidden;
+	}
