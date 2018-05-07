@@ -29,8 +29,9 @@ nav	{
 	height: 100%;
 	float: left;
     	max-width: 160px;
-    	margin: 0;
-    	padding: 1em;
+    	margin-right: 0px;
+	border-right: 1px solid gray;
+    	padding: 2em;
 	}
 
 nav ul {
@@ -42,8 +43,20 @@ nav ul a {
     	text-decoration: none;
 	}
 .softwareValidation {
-	margin-left: 170px;
-    	border-left: 1px solid gray;
-    	padding: 1em;
+	margin-left: 40px;
+    	padding: 4em;
     	overflow: hidden;
 	}
+.fileDetails {
+	margin-left: 0px;
+	font-size: 12px;
+	font-family: 'monospace','Courier','Courier New';
+	color: #111111;
+	padding: 1em;
+}
+button {
+	border-radius: 8px;
+	width: 200px;
+	height: 40px;
+	background-color: SlateGray;
+}	
