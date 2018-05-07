@@ -1,14 +1,20 @@
 pragma solidity ^0.4.21;
 
-contract code_validation {
+contract codeValidation {
   address creator = address(0);
-  string company_name = "None"
-  mapping (string => bytes32) code_hashes; 
+  string companyName = "None";
+  mapping (string => bytes32) codeHashes; 
+  event hashAdded(string _fileName, bytes32 _codeHash);
 
-  function code_validation(string _company_name) public {
+  constructor(string _companyName) public {
     creator = msg.sender;
-    company_name = _company_name;
+    companyName = _companyName;
   }
 
+  function addHash(bytes32 _codeHash, string _fileName) public returns (bool success) {
+    codeHashes[_fileName] = _codeHash;
+    emit hashAdded(_fileName, codeHashes[_fileName]);
+    return true;
+  }
 }
   
