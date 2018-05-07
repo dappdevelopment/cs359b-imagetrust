@@ -4,32 +4,40 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       		<script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-      		<script src="js/app.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+		<script src="js/app.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/app.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<div class = "container">
-		<header><h1>ImageTrust</h1></header>
-		<nav>
-		<ul>
-			<li><a href="#">Software Validation</a></li>
-			<li><a href="#">Software Verification</a></li>
-			<li><a href="#">Software Licensing</a></li>
-		</ul>
-		</nav>
-		<div class = "softwareValidation">
-			<div class="dropdown">
-				<select name="EntityName">
-					<option value="company1">Company 1</option>
-					<option value="company2">Company 2</option>
-				</select>
-				<br><br>
-			<input type="file" id="myFile">
-			<br><br>
-			<button onclick="validate()">Validate and Push</button>
+			<header><h1>ImageTrust</h1></header>
+			<nav>
+			<ul>
+				<li><a href="#">Software Validation</a></li><br><br>
+				<li><a href="#">Software Verification</a></li><br><br>
+				<li><a href="#">Software Licensing</a></li>
+			</ul>
+			</nav>
+			<div class = "softwareValidation">
+				<div class="dropdown">
+					<select name="EntityName">
+						<option value="company1">Company 1</option>
+						<option value="company2">Company 2</option>
+					</select><br><br>
+				</div>
+				<input type="file" id="file-dialog"><br><br>
+				<button onclick="app()">Validate and Push</button><br><br><br>
+				<div class = "fileDetails">
+					<p id="fileDetailsText"></p>
+					<p id="fileName"></p>
+					<p id="hashValue"></p>
+					<p id="timeStamp"></p>
+				</div>
+			</div>
 		</div>
 		<footer>Copyright &copy; imageTrust.com</footer>
-		</div>
+
 	</body>
 </html>
