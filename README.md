@@ -1,12 +1,10 @@
 # CS359B Project ImageTrust
 
-(short description here)
+ImageTrust validates the integrity of software packages and handles software licensing, thus serving as a secure interface between the developer and user. ImageTrust uses the Ethereum blockchain to store hashes of trusted code, while other nodes check the identity of the uploader.
 
 ## Technologies used
 
-(Add only the specific technologies you need to use until Midterm)
-
-* (e.g. solidity, react, node, mysql)
+Solidity, node, mysql, javaScript
 
 ## Istallation intructions
 
