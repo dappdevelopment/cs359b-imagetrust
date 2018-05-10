@@ -3,60 +3,120 @@ html	{
 	}
 body	{
 	min-height: 100%;
-	background-color: #F0F0F0;
+	background-color: #c0c0c0;
 	font-family: 'Raleway','Source Sans Pro', 'Arial'; 
-	}
-.container	{
-	height: 100%;
-	width: 100%;
-
 	}
 header	{
 	padding: 0.75em;
-    	color: white;
-    	background-color: black;
+    	color: #1a9367;
+    	background-color: #2d484c;
     	clear: left;
     	text-align: left;
 	}
 footer  {
         padding: 0.5em;
-        color: white;
-        background-color: black;
+        color: #606060;
+        background-color: #e0e0e0;
         clear: left;
         text-align: center;
         }    
 nav	{
-	height: 100%;
+	height: 115.25%;
 	float: left;
     	max-width: 160px;
     	margin-right: 0px;
-	border-right: 1px solid gray;
-    	padding: 2em;
+    	padding: 1em;
+        background-color: #2d484c;
+        color: #F0F0F0;
 	}
-
-nav ul {
+nav ul  {
     	list-style-type: none;
     	padding: 0;
+        margin: 0;
+        width: 120%;
+        height: 100%;
+        text-align: left;
 	}
-   
 nav ul a {
+        height: 4%;
+        padding: 10px 10px;
     	text-decoration: none;
+        color: #F0F0F0;
+        width: 80%;
 	}
+li a    {
+        display: block;
+        color: #000;
+        padding: 8px 30px;
+        text-decoration: none;
+        }
+li a.active {
+        background-color: #1a9e67;
+        color: white;
+        }
+li a:hover:not(.active) {
+        background-color: #89c4ab;
+        color: white;
+        }
 .softwareValidation {
 	margin-left: 40px;
+        height: 100%;
     	padding: 4em;
+        color: white;
     	overflow: hidden;
+        background-color: #f0f0f0;
 	}
+.fileDetailsSec {
+        background-color: #e0e0e0;
+        }
 .fileDetails {
 	margin-left: 0px;
 	font-size: 12px;
 	font-family: 'monospace','Courier','Courier New';
-	color: #111111;
+	color: #ef8323;
 	padding: 1em;
-}
-button {
+        background-color: #f0f0f0;
+        }
+.dropdown select {
+        border: 1px solid;
+        border-color: #1a9e67;
+        font-size: 20px;
+        text-align: center;
+        padding: 0px;
+        width: 170px;
+        height: 40px;
+        color: #1a9e67;
+        background-color: #f0f0f0;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
+.dropdown select option:hover {
+        background-color: #302f30;
+        }
+button  {
+        border: none;
+        font-size: 20px;
+        text-align: center;
 	border-radius: 8px;
 	width: 200px;
 	height: 40px;
-	background-color: SlateGray;
-}	
+	background-color: #86af08;
+        color: white;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
+input[type="file"]  {
+        display:none;
+        }
+label   {
+        height: 10%;
+        }
+.file-upload {         
+        border: 1px solid; 
+        border-color: #1a9e67;
+        font-size: 20px;
+        text-align: center;
+        padding: 10px;
+        width: 150px;
+        height: 20px;
+        color: #1a9e67;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
