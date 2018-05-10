@@ -12,6 +12,7 @@ contract codeValidation {
   }
 
   function addHash(bytes32 _codeHash, string _fileName) public returns (bool success) {
+    require(msg.sender == creator);
     codeHashes[_fileName] = _codeHash;
     emit hashAdded(_fileName, codeHashes[_fileName]);
     return true;
