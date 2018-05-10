@@ -58,6 +58,17 @@ li a:hover:not(.active) {
         background-color: #89c4ab;
         color: white;
         }
+#main-page	{
+	padding: 1em;
+	background-color: #f0f0f0;
+	height: 120%
+}
+#welcome	{
+	padding: 1em 12em;
+	font-size: 20px;
+	color: #1a9e67;
+font-family: 'Raleway','Source Sans Pro', 'Arial';
+	}
 .softwareValidation {
 	margin-left: 40px;
         height: 100%;
@@ -120,3 +131,31 @@ label   {
         color: #1a9e67;
         font-family: 'Raleway','Source Sans Pro', 'Arial';
         }
+#imageTrust:link {
+    color: #1a9e67;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 40px;
+font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+#imageTrust:visited {
+    color: #1a9e67;
+    background-color: transparent;
+    text-decoration: none;
+font-size: 40px;
+font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+#imageTrust:hover {
+    color: #1a9e67;
+    background-color: transparent;
+    text-decoration: none;
+font-size: 40px;
+font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
+#imageTrust:active {
+    color: #1a9e67;
+    background-color: transparent;
+    text-decoration: none;
+font-size: 40px;
+font-family: 'Raleway','Source Sans Pro', 'Arial';
+}
