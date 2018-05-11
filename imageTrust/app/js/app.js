@@ -24,7 +24,7 @@ function app()	{
             allFileNames.push(fileName);
             var reader = new FileReader();
             reader.onload = function() {
-              var sha256Hash = CryptoJS.SHA256(reader.result);
+              var sha256Hash = JSON.stringify(CryptoJS.SHA256(reader.result));
               allFileHashes.push(sha256Hash);
               var date = new Date().toLocaleString();
               allFileDates.push(date);
@@ -84,7 +84,10 @@ function app()	{
         $('#validateBTN').click(function () {
           var i
           for (i=0; i<allFileNames.length; i++) {
-            hashToBlockchain(allFileNames[i], web3.utils.hexToBytes(web3.utils.toHex(allFileHashes[i])));
+            console.log("READ")
+            console.log(typeof allFileHashes[i]);
+            console.log("ME")
+            hashToBlockchain(allFileNames[i], allFileHashes[i]);
           }
         });
 
