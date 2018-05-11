@@ -193,7 +193,7 @@ h2	{
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
-    background-color: #111;
+    background-color: #bbb;
 }
 .container {
     padding: 16px;
@@ -213,5 +213,6 @@ span.psw {
     .cancelbtn {
        width: 50%;
     }
-}
-
+#validationResult	{
+	color: green;
+	}

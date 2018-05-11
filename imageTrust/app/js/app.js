@@ -73,7 +73,7 @@ function app()	{
 
           contract.methods.addHash(fileHash, fileName).send({from: userAccount})
             .then(function showRes() {
-              $('#validateBTN').text("Pushed to blockchain");
+              $('#validationResult').text("Pushed to blockchain");
             }).then(function () {
               console.log("Hash added to the blockchain")
             }).catch(function (e) {
