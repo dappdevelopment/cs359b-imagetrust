@@ -24,7 +24,9 @@ function app()	{
             allFileNames.push(fileName);
             var reader = new FileReader();
             reader.onload = function() {
-              var sha256Hash = JSON.stringify(CryptoJS.SHA256(reader.result));
+              var sha256Hash = CryptoJS.SHA256(reader.result);
+              console.log(sha256Hash);
+              //var sha256Hash = JSON.stringify(CryptoJS.SHA256(reader.result));
               allFileHashes.push(sha256Hash);
               var date = new Date().toLocaleString();
               allFileDates.push(date);
@@ -68,10 +70,10 @@ function app()	{
 	    console.log(contract);
 	});
 
-        function hashToBlockchain(fileName, fileHash) {
+        function infoToBlockchain(companyName, fileName, fileHash) {
           console.log("Adding hash", fileName, fileHash);
 
-          contract.methods.addHash(fileHash, fileName).send({from: userAccount})
+          contract.methods.addSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
             .then(function showRes() {
               $('#validationResult').text("Pushed to blockchain");
             }).then(function () {
@@ -87,10 +89,18 @@ function app()	{
             console.log("READ")
             console.log(typeof allFileHashes[i]);
             console.log("ME")
-            hashToBlockchain(allFileNames[i], allFileHashes[i]);
+            infoToBlockchain(companyName, allFileNames[i], allFileHashes[i]);
           }
         });
 
+        function compareSoftInfo(companyName, fileName, fileHash) {
+          console.log("Searching for information", fileName);
 
-      } 
+          bool 
+
+          fileName, companyName, hash = contrac.methods.viewSoftInfo(fileName, companyName);
+        }
+
+
+} 
 $(document).ready(app);  
