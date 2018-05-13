@@ -114,7 +114,10 @@ font-family: 'Raleway','Source Sans Pro', 'Arial';
 .dropdown select option:hover {
         background-color: #302f30;
         }
-
+#fname  {
+        padding: 0em 1em;
+        float: right;
+        }
 input[type="file"]  {
         display:none;
         }

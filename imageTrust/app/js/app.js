@@ -12,7 +12,11 @@ function app()	{
         var allFileDates = [];
         var Nfiles = 0;
         var companyName = null;
-        
+       
+        $("#companyName").change(function() {
+        var sel = document.getElementById("companyName");
+        companyName = sel.options[sel.selectedIndex].value;
+        });
 
         /*----------Upload Files, Calculate Hash, Timestamp and Display in HTML--------*/
         $("#file-dialog").change(function() {
@@ -20,15 +24,12 @@ function app()	{
         });
 
         function handleFiles(files) {
-          var sel = document.getElementById("companyName");
-          companyName = sel.options[sel.selectedIndex].value;
 	  for (var i=0; i<files.length; i++) {
 	    var fileName = files[i].name;
             allFileNames.push(fileName);
+           // document.getElementById("fname").innerHTML = fileName;
             var reader = new FileReader();
             reader.onload = function() {
-              var sha256Hash = CryptoJS.SHA256(reader.result);
-              console.log(sha256Hash);
               var sha256Hash = CryptoJS.SHA256(reader.result).toString();
               allFileHashes.push(sha256Hash);
               var date = new Date().toLocaleString();
@@ -36,7 +37,7 @@ function app()	{
               console.log("Hash is " + sha256Hash);
 	      document.getElementById("fileDetailsText").innerHTML = "File Details";
 	      document.getElementById("hashValue").innerHTML = "Hash Value of File: " + sha256Hash;
-              document.getElementById("fileName").innerHTML = "File Name: " + fileName;	
+              document.getElementById("fileName").innerHTML = "File Name: " + fileName;
 	      document.getElementById("timeStamp").innerHTML = "Time Stamp: " + date;
               document.getElementById("company").innerHTML = "Company Name: " + companyName;
 	    };
@@ -87,6 +88,17 @@ function app()	{
             });
         }
 
+        function verifyUsingBlockchain(companyName, fileName, fileHash) {
+            contract.methods.viewSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
+              .then(function showRes()  {
+                $('#verificationResult').text("Image Verified Using Blockchain");
+              }).then(function () {
+                console.log("File Verified")
+              }).catch(function (e) {
+                console.log("Error in verifying")
+              });
+        }
+
         $('#validateBTN').click(function () {
           var i
           for (i=0; i<allFileNames.length; i++) {
@@ -96,6 +108,14 @@ function app()	{
             infoToBlockchain(companyName, allFileNames[i], allFileHashes[i]);
           }
         });
+
+        $('#verifyBTN').click(function () {
+          var i
+            for (i=0; i<allFileNames.length; i++) {
+              verifyUsingBlockchain(companyName, allFileNames[i], allFileHashes[i]);
+            }
+        });
+
 
         function compareSoftInfo(companyName, fileName, fileHash) {
           console.log("Searching for information", fileName);
