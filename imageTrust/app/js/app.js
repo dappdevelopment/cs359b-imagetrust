@@ -12,8 +12,6 @@ function app()	{
         var allFileDates = [];
         var Nfiles = 0;
         var companyName = null;
-        /*var sel = document.getElementById("companyName");
-        var companyName = sel.options[sel.selectedIndex].value;*/
         
 
         /*----------Upload Files, Calculate Hash, Timestamp and Display in HTML--------*/
@@ -22,6 +20,8 @@ function app()	{
         });
 
         function handleFiles(files) {
+          var sel = document.getElementById("companyName");
+          companyName = sel.options[sel.selectedIndex].value;
 	  for (var i=0; i<files.length; i++) {
 	    var fileName = files[i].name;
             allFileNames.push(fileName);
@@ -29,7 +29,7 @@ function app()	{
             reader.onload = function() {
               var sha256Hash = CryptoJS.SHA256(reader.result);
               console.log(sha256Hash);
-              //var sha256Hash = JSON.stringify(CryptoJS.SHA256(reader.result));
+              var sha256Hash = CryptoJS.SHA256(reader.result).toString();
               allFileHashes.push(sha256Hash);
               var date = new Date().toLocaleString();
               allFileDates.push(date);
@@ -38,8 +38,7 @@ function app()	{
 	      document.getElementById("hashValue").innerHTML = "Hash Value of File: " + sha256Hash;
               document.getElementById("fileName").innerHTML = "File Name: " + fileName;	
 	      document.getElementById("timeStamp").innerHTML = "Time Stamp: " + date;
-              var sel = document.getElementById("companyName");
-              companyName = sel.options[sel.selectedIndex].value;
+              document.getElementById("company").innerHTML = "Company Name: " + companyName;
 	    };
             reader.onerror = function() {
             console.error("Could not read the file");
@@ -77,8 +76,7 @@ function app()	{
         
         
         function infoToBlockchain(companyName, fileName, fileHash) {
-          console.log("Adding hash", fileName, fileHash);
-          console.log("Company Name: ", companyName);
+          console.log("Adding hash", fileName, fileHash, companyName);
           contract.methods.addSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
             .then(function showRes() {
               $('#validationResult').text("Pushed to blockchain");
