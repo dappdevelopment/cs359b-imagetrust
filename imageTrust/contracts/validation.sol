@@ -1,21 +1,26 @@
 pragma solidity ^0.4.21;
 
 contract codeValidation {
-  address creator = address(0);
-  string companyName = "None";
-  mapping (string => string) codeHashes; 
+  address CREATOR = address(0);
+  string COMPANYNAME = "None";
+  mapping (string => mapping (string => string)) codeHashes; 
   event hashAdded(address _creator, string _fileName, string _codeHash);
 
   constructor(string _companyName) public {
-    creator = msg.sender;
-    companyName = _companyName;
+    CREATOR = msg.sender;
+    COMPANYNAME = _companyName;
   }
 
-  function addHash(string _codeHash, string _fileName) public returns (bool success) {
-    require(msg.sender == creator);
-    codeHashes[_fileName] = _codeHash;
-    emit hashAdded(msg.sender, _fileName, codeHashes[_fileName]);
+  function addSoftInfo(string _companyName, string _fileName, string _codeHash) public returns (bool success) {
+    //require(msg.sender == CREATOR);
+    codeHashes[_companyName][_fileName] = _codeHash;
+    emit hashAdded(msg.sender, _fileName, codeHashes[_companyName][_fileName]);
     return true;
+  }
+
+  function viewSoftInfo(string _companyName, string _fileName, string _fileHash) public view returns (bool) {
+    bool hashTruth = (keccak256(_fileHash) == keccak256(codeHashes[_companyName][_fileName]));
+    return hashTruth; 
   }
 }
   
