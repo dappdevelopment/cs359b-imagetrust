@@ -11,7 +11,10 @@ function app()	{
         var allFileHashes = [];
         var allFileDates = [];
         var Nfiles = 0;
-
+        var companyName = null;
+        /*var sel = document.getElementById("companyName");
+        var companyName = sel.options[sel.selectedIndex].value;*/
+        
 
         /*----------Upload Files, Calculate Hash, Timestamp and Display in HTML--------*/
         $("#file-dialog").change(function() {
@@ -35,6 +38,8 @@ function app()	{
 	      document.getElementById("hashValue").innerHTML = "Hash Value of File: " + sha256Hash;
               document.getElementById("fileName").innerHTML = "File Name: " + fileName;	
 	      document.getElementById("timeStamp").innerHTML = "Time Stamp: " + date;
+              var sel = document.getElementById("companyName");
+              companyName = sel.options[sel.selectedIndex].value;
 	    };
             reader.onerror = function() {
             console.error("Could not read the file");
@@ -69,10 +74,11 @@ function app()	{
 	    console.log(userAccount);
 	    console.log(contract);
 	});
-
+        
+        
         function infoToBlockchain(companyName, fileName, fileHash) {
           console.log("Adding hash", fileName, fileHash);
-
+          console.log("Company Name: ", companyName);
           contract.methods.addSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
             .then(function showRes() {
               $('#validationResult').text("Pushed to blockchain");
