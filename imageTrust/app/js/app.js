@@ -80,11 +80,11 @@ function app()	{
           console.log("Adding hash", fileName, fileHash, companyName);
           contract.methods.addSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
             .then(function showRes() {
-              $('#validationResult').text("Pushed to blockchain");
+              $('#validationResult').text("Image Pushed to blockchain");
             }).then(function () {
-              console.log("Hash added to the blockchain")
+              console.log("Hash added to the blockchain");
             }).catch(function (err) {
-              console.log("Error in addHash was caught")
+              console.log("Error in addHash was caught");
             });
         }
 
@@ -96,24 +96,22 @@ function app()	{
                 }
                 $('#verificationResult').text("Image Verified Using Blockchain");
               }).then(function () {
-                console.log("File Verified")
+                console.log("File Verified");
               }).catch(function (err) {
-                console.log("Error in verifying")
+                $('#verificationResult').text("Image not verified");
+                console.log("Error in verifying");
               });
         }
 
         $('#validateBTN').click(function () {
-          var i
+          var i;
           for (i=0; i<allFileNames.length; i++) {
-            console.log("READ")
-            console.log(typeof allFileHashes[i]);
-            console.log("ME")
             infoToBlockchain(companyName, allFileNames[i], allFileHashes[i]);
           }
         });
 
         $('#verifyBTN').click(function () {
-          var i
+          var i;
           for (i=0; i<allFileNames.length; i++) {
             verifyUsingBlockchain(companyName, allFileNames[i], allFileHashes[i]);
           }
