@@ -1,3 +1,7 @@
+:root   {
+        --main-bg-color:  #F0F0F0;
+        --dark-color: #2d484c;
+        }
 html	{
 	height: 100%;
 	}
@@ -9,7 +13,7 @@ body	{
 header	{
 	padding: 0.75em;
     	color: #1a9367;
-    	background-color: #2d484c;
+    	background-color: var(--dark-color);
     	clear: left;
     	text-align: left;
 	}
@@ -21,13 +25,13 @@ footer  {
         text-align: center;
         }    
 nav	{
-	height: 115.25%;
+	height: 125%;
 	float: left;
     	max-width: 160px;
     	margin-right: 0px;
     	padding: 1em;
-        background-color: #2d484c;
-        color: #F0F0F0;
+        background-color: var(--dark-color);
+        color: var(--main-bg-color);
 	}
 nav ul  {
     	list-style-type: none;
@@ -41,7 +45,7 @@ nav ul a {
         height: 4%;
         padding: 10px 10px;
     	text-decoration: none;
-        color: #F0F0F0;
+        color: var(--main-bg-color);
         width: 80%;
 	}
 li a    {
@@ -63,7 +67,7 @@ button  {
         font-size: 20px;
         text-align: center;
 	border-radius: 8px;
-	width: 200px;
+	width: 180px;
 	height: 40px;
 	background-color: #86af08;
         color: white;
@@ -71,22 +75,22 @@ button  {
         }
 #main-page	{
 	padding: 1em;
-	background-color: #f0f0f0;
+	background-color: var(--main-bg-color);
 	height: 120%
 }
 #welcome	{
 	padding: 1em 12em;
 	font-size: 20px;
 	color: #1a9e67;
-font-family: 'Raleway','Source Sans Pro', 'Arial';
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
 	}
 .softwareValidation {
 	margin-left: 40px;
         height: 100%;
-    	padding: 4em;
+    	padding: 6em 20em;
         color: white;
     	overflow: hidden;
-        background-color: #f0f0f0;
+        background-color: var(--main-bg-color);
 	}
 .fileDetailsSec {
         background-color: #e0e0e0;
@@ -97,7 +101,7 @@ font-family: 'Raleway','Source Sans Pro', 'Arial';
 	font-family: 'monospace','Courier','Courier New';
 	color: #ef8323;
 	padding: 1em;
-        background-color: #f0f0f0;
+        background-color: var(--main-bg-color);
         }
 .dropdown select {
         border: 1px solid;
@@ -105,16 +109,19 @@ font-family: 'Raleway','Source Sans Pro', 'Arial';
         font-size: 20px;
         text-align: center;
         padding: 0px;
-        width: 170px;
+        width: 180px;
         height: 40px;
         color: #1a9e67;
-        background-color: #f0f0f0;
+        background-color: var(--main-bg-color);
         font-family: 'Raleway','Source Sans Pro', 'Arial';
         }
 .dropdown select option:hover {
         background-color: #302f30;
         }
-
+#fname  {
+        padding: 0em 1em;
+        float: right;
+        }
 input[type="file"]  {
         display:none;
         }
@@ -127,92 +134,89 @@ label   {
         font-size: 20px;
         text-align: center;
         padding: 10px;
-        width: 150px;
+        width: 158px;
         height: 20px;
         color: #1a9e67;
         font-family: 'Raleway','Source Sans Pro', 'Arial';
         }
 #imageTrust:link {
-    color: #1a9e67;
-    background-color: transparent;
-    text-decoration: none;
-    font-size: 40px;
-font-family: 'Raleway','Source Sans Pro', 'Arial';
-}
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 40px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
 #imageTrust:visited {
-    color: #1a9e67;
-    background-color: transparent;
-    text-decoration: none;
-font-size: 40px;
-font-family: 'Raleway','Source Sans Pro', 'Arial';
-}
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 40px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
 #imageTrust:hover {
-    color: #1a9e67;
-    background-color: transparent;
-    text-decoration: none;
-font-size: 40px;
-font-family: 'Raleway','Source Sans Pro', 'Arial';
-}
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 40px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
 #imageTrust:active {
-    color: #1a9e67;
-    background-color: transparent;
-    text-decoration: none;
-font-size: 40px;
-font-family: 'Raleway','Source Sans Pro', 'Arial';
-}
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 40px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
 .loginPage{
-	background-color: #f0f0f0;
+	background-color: var(--main-bg-color);
 	height: 100%;
 	padding:0em;
-}
+        }
 input[type=text], input[type=password] {
-    width: 25%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+        width: 25%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
 	text-align: center;
-}
+        }
 h2	{
 	text-align: center;
 	color: #1a9e67;
 	padding: 30px 30px;
-}
-.login {
-    background-color: #86af08;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 25%;
+        }
+.login  {
+        background-color: #86af08;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 25%;
 	text-align: center;
-}
+        }
 .login: hover {
-    opacity: 0.8;
-}
+        opacity: 0.8;
+        }
 .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #bbb;
-}
+        width: auto;
+        padding: 10px 18px;
+        background-color: #bbb;
+        }
 .container {
-    padding: 16px;
-}
+        padding: 16px;
+        }
 
 span.psw {
-    float: none;
-    padding-top: 16px;
-}
+        float: none;
+        padding-top: 16px;
+        }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 100px) {
-    span.psw {
-       display: block;
-	float: none;
-    }
-    .cancelbtn {
-       width: 50%;
-    }
-#validationResult	{
-	color: green;
-	}
+  span.psw {
+        display: block;
+        float: none;
+        }
+  .cancelbtn {
+        width: 50%;
+        }
