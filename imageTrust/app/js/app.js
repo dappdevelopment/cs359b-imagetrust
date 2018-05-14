@@ -83,18 +83,21 @@ function app()	{
               $('#validationResult').text("Pushed to blockchain");
             }).then(function () {
               console.log("Hash added to the blockchain")
-            }).catch(function (e) {
+            }).catch(function (err) {
               console.log("Error in addHash was caught")
             });
         }
 
         function verifyUsingBlockchain(companyName, fileName, fileHash) {
-            contract.methods.viewSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
-              .then(function showRes()  {
+            contract.methods.viewSoftInfo(companyName, fileName, fileHash).call()
+              .then(function showRes(truth)  {
+                if (!truth) {
+                  throw new Error("Not verified");
+                }
                 $('#verificationResult').text("Image Verified Using Blockchain");
               }).then(function () {
                 console.log("File Verified")
-              }).catch(function (e) {
+              }).catch(function (err) {
                 console.log("Error in verifying")
               });
         }
@@ -111,19 +114,10 @@ function app()	{
 
         $('#verifyBTN').click(function () {
           var i
-            for (i=0; i<allFileNames.length; i++) {
-              verifyUsingBlockchain(companyName, allFileNames[i], allFileHashes[i]);
-            }
+          for (i=0; i<allFileNames.length; i++) {
+            verifyUsingBlockchain(companyName, allFileNames[i], allFileHashes[i]);
+          }
         });
-
-
-        function compareSoftInfo(companyName, fileName, fileHash) {
-          console.log("Searching for information", fileName);
-
-          bool 
-
-          fileName, companyName, hash = contrac.methods.viewSoftInfo(fileName, companyName);
-        }
 
 
 } 
