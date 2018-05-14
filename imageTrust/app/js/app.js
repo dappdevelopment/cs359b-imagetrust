@@ -98,6 +98,7 @@ function app()	{
               }).then(function () {
                 console.log("File Verified");
               }).catch(function (err) {
+                $('#verificationResult').css("color", "red");
                 $('#verificationResult').text("Image not verified");
                 console.log("Error in verifying");
               });

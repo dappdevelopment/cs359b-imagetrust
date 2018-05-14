@@ -219,3 +219,6 @@ span.psw {
 #validationResult	{
 	color: green;
 	}
+#verificationResult {
+        color: green;
+      }
