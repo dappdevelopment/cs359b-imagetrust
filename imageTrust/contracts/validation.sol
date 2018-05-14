@@ -11,6 +11,14 @@ contract codeValidation {
     COMPANYNAME = _companyName;
   }
 
+
+  ////////////////////////////////////////////////////////////////////////
+  //  Adds code information to the blockchain by adding the code hash   //
+  //  to this.codeHashes and indexing with company and file name.       //
+  //    _companyName: Name of the company validating the code           //
+  //    _fileName:  Name of the file                                    //
+  //    _codeHash: Hash of the code being validated                     //
+  ////////////////////////////////////////////////////////////////////////
   function addSoftInfo(string _companyName, string _fileName, string _codeHash) public returns (bool success) {
     //require(msg.sender == CREATOR);
     codeHashes[_companyName][_fileName] = _codeHash;
@@ -18,6 +26,14 @@ contract codeValidation {
     return true;
   }
 
+
+  ////////////////////////////////////////////////////////////////////////
+  //  Verify that the software is genuine by checking the hash against  //
+  //  the blockchain with the same company and file name.               //
+  //    _companyName: Name of the company validating the code           //
+  //    _fileName:  Name of the file                                    //
+  //    _codeHash: Hash of the code being validated                     //
+  ////////////////////////////////////////////////////////////////////////
   function viewSoftInfo(string _companyName, string _fileName, string _fileHash) public view returns (bool) {
     bool hashTruth = (keccak256(_fileHash) == keccak256(codeHashes[_companyName][_fileName]));
     return hashTruth; 
