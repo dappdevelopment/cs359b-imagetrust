@@ -7,54 +7,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
     <script src="js/app.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/signupLogin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <header><h1>ImageTrust</h1></header>
-    <div class="registerPage" align = "center">    
-        <ul class="tab-group">
-          <li class="signUp"><a href="#signup" class="signUpText">Sign Up</a></li>
-          <li class="signUp"><a href="#login" class="logInText">Log In</a></li>
-        </ul>
-        
-        <div class="tab-content">
-          <div id="signup">   
-            <p class="signForFree">Sign Up for Free</h1>
-            
-            <form action="/" method="post">
-            
+    <div class="loginPage" align = "center">    
+        <div class="tab">
+          <button class="signUp" onclick="#signup">Sign Up</button>
+          <button class="signUp" onclick="#login">Log In</button>
+        </div>
+
+        <div class=tab-content-signUp">
+          <div id="signup">
             <div class="top-row">
               <div class="field-wrap">
-                <label class="regLabel">
-                  First Name<span class="req">*</span>
-                </label>
-                <input type="text" required autocomplete="off" />
+                  <label class="regLabel">
+                    First Name<span class="req">*</span>
+                  </label>
+                  <input type="text" required autocomplete="off" />
               </div>
-          
+              <div class="field-wrap">
+                    <label class="regLabel">
+                      Last Name<span class="req">*</span>
+                    </label>
+                    <input type="text"required autocomplete="off"/>
+              </div>
+            </div>
+            <div class="field-wrap">
+                <label class="regLabel">
+                  Email Address<span class="req">*</span>
+                </label class="regLabel">
+                <input type="email"required autocomplete="off"/>
+              </div>
               <div class="field-wrap">
                 <label class="regLabel">
-                  Last Name<span class="req">*</span>
+                  Set A Password<span class="req">*</span>
                 </label>
-                <input type="text"required autocomplete="off"/>
+                <input type="password"required autocomplete="off"/>
               </div>
+              <button type="submit" class="button button-block"/>Get Started</button>
+              </form>
             </div>
-            <div class="field-wrap">
-              <label class="regLabel">
-                Email Address<span class="req">*</span>
-              </label class="regLabel">
-              <input type="email"required autocomplete="off"/>
-            </div>
-            <div class="field-wrap">
-              <label class="regLabel">
-                Set A Password<span class="req">*</span>
-              </label>
-              <input type="password"required autocomplete="off"/>
-            </div>
-            <button type="submit" class="button button-block"/>Get Started</button>
-            </form>
           </div>
-          <div id="login">   
+        </div>
+        
+        <div class="tab-content-login">
+          <div id="login">     
             <h1>Welcome Back!</h1>
             <form action="/" method="post">
               <div class="field-wrap">

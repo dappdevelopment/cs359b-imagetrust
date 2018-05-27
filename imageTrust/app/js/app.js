@@ -105,7 +105,7 @@ function app()	{
         infoToBlockchain(companyName, allFileNames[i], allFileHashes[i]);
       }
     });
-    
+  
     $('#verifyBTN').click(function () {
       var i;
       for (i=0; i<allFileNames.length; i++) {
@@ -139,14 +139,14 @@ function app()	{
           }
         }
     });
-    $('.tab a').on('click', function (e) {
+    $('.tab').on('click', function (e) {
       e.preventDefault();
       $(this).parent().addClass('active');
       $(this).parent().siblings().removeClass('active');
       target = $(this).attr('href');
       $('.tab-content > div').not(target).hide();
       $(target).fadeIn(600);
-    });
-    }
-} 
+    });  
+  
 $(document).ready(app);  
+  }
