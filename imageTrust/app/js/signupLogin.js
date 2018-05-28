@@ -27,8 +27,8 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
       }
   
   });
-  $('.anchor').hide();
-/*  $('.tab a').on('click', function (e) {
+ // $('.anchor').hide();
+  /*$('.tab a').on('click', function (e) {
     
     e.preventDefault();
     
@@ -41,10 +41,10 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
     
     $(target).fadeIn(600);
     
-  });
-  */
+  });*/
+  
 
 $('.tab').click(function(){
-  $('.tab-content').hide(); 
-  $('.anchor').show();
+//  $('.tab-content').hide(); 
+  $('.tab-content, .anchor').toggle();
 });
