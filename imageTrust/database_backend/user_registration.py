@@ -11,13 +11,13 @@ import collections
 #######################
 
 requiredFields = ["FirstName", "Company", "Password", "KeyLink"]
-dataBaseHostName  = "localhost"
-dataBaseUserName  = "imageTrust"
-dataBasePassword  = "superSecret"
+dataBaseHostName  = "127.0.0.1"#"localhost"
+dataBaseUserName  = "test"
+dataBasePassword  = "Te$tL0cal"
 dataBaseName      = "userInformation"
 
 # variables for debugging
-userName = "testUser"
+userName = "testUser0"
 userFirstName = "Jimmy-John-Jones"
 userKeyLink = "www.google.com"
 userPassword = "superdupersecret"
@@ -45,7 +45,7 @@ certInfo = x509.get_subject().get_components()
 #####  Add information to database  #####
 #########################################
 
-###  Gather information  ###
+#####  Gather information  #####
 userInformation = collections.defaultdict(None)
 
 userInformation["UserName"] = userName
@@ -66,7 +66,41 @@ for key,val in certInfo:
 # TODO read in txt file and get key
 userInformation["PublicKey"] = "leKey"
 
+###  Check if required fields are filled  ###
 for key in userInformation:
   if userInformation[key] is None:
     raise RuntimeError("Requre-" + key)
 
+
+#####  Add user information to database  #####
+# Get database
+db = MySQLdb.connect(host=dataBaseHostName,
+                     user=dataBaseUserName,
+                     passwd=dataBasePassword,
+                     db=dataBaseName)
+
+cur = db.cursor()
+
+# Add new table
+#if cur.execute("SELECT COUNT(*) FROM " + userName) != 0:
+#  raise RuntimeError("userNameExists")
+
+
+
+sqlKeys = ""
+sqlVals = ""
+sqlData = []
+for key,val in userInformation.iteritems():
+  sqlKeys += key + ", "
+  sqlVals += "%s, "
+  sqlData.append(val)
+
+sql = "INSERT INTO userInfoTable2 (" + sqlKeys[:-2] + ")"\
+        + " VALUES (" + sqlVals[:-2] + ")"
+sqlData = tuple(sqlData)
+
+print(sql, sqlData)
+print("\n\n\n")
+cur.execute(sql, sqlData)
+db.commit()
+db.close()
