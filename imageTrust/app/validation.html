@@ -10,34 +10,36 @@
     <link rel="stylesheet" type="text/css" href="css/app.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
+  <header><a href="main.html" id="imageTrust">imageTrust</header>
   <body>
     <div class = "nav-col">
-      <header><a href="index.html" id="imageTrust">ImageTrust</header>
+      
       <nav><ul>
         <li><a class="active" href="validation.html">Software Validation</a></li><br><br>
         <li><a href="verification.html">Software Verification</a></li><br><br>
         <li><a href="licensing.html">Software Licensing</a></li>
       </ul></nav>
-
-      <div class = "softwareValidation">
-        <div class="dropdown">
-          <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
-            <option value="companyName">Entity Name</option>
-            <option value="company1">Company 1</option>
-	    <option value="company2">Company 2</option>
-	  </select><br><br>
-        </div><br>
-        <div class= "file-upload"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div><br><br>
-        <button onclick="app()" id="validateBTN">Validate and Push</button>
-	<div id="validationResult"></div><br><br>
-        <div class = "fileDetailsSec">
-          <div class = "fileDetails">
-            <p id="fileDetailsText"></p>
-            <p id="fileName"></p>
-	    <p id="hashValue"></p>
-            <p id="company"></p>
-	    <p id="timeStamp"></p>
-	  </div>
+      <div class = "val-wrapper">
+        <div class = "softwareValidation">
+          <div class="dropdown">
+            <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
+              <option value="companyName">Entity Name</option>
+              <option value="company1">Company 1</option>
+	            <option value="company2">Company 2</option>
+	          </select><br><br>
+          </div><br>
+          <div class= "file-upload"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div><br><br>
+          <button onclick="app()" id="validateBTN">Validate and Push</button>
+	        <div id="validationResult"></div><br><br>
+          <div class = "fileDetailsSec">
+            <div class = "fileDetails">
+                  <p id="fileDetailsText"></p>
+                  <p id="fileName"></p>
+	                <p id="hashValue"></p>
+                  <p id="company"></p>
+	                <p id="timeStamp"></p>
+	          </div>
+          </div>
         </div>
       </div>
     </div>

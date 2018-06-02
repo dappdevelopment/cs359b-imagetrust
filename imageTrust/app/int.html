@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>ImageTrust</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/signupLogin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <header><h1>ImageTrust</h1></header>
+    <div class="loginPage" align = "center">    
+        <div class="tab">
+          <button class="signUp" onclick="#signup">Sign Up</button>
+          <button class="signUp" onclick="#login">Log In</button>
+        </div>
+
+        <div class=tab-content-signUp">
+          <div id="signup">
+            <div class="top-row">
+              <div class="field-wrap">
+                  <label class="regLabel">
+                    First Name<span class="req">*</span>
+                  </label>
+                  <input type="text" required autocomplete="off" />
+              </div>
+              <div class="field-wrap">
+                    <label class="regLabel">
+                      Last Name<span class="req">*</span>
+                    </label>
+                    <input type="text"required autocomplete="off"/>
+              </div>
+            </div>
+            <div class="field-wrap">
+                <label class="regLabel">
+                  Email Address<span class="req">*</span>
+                </label class="regLabel">
+                <input type="email"required autocomplete="off"/>
+              </div>
+              <div class="field-wrap">
+                <label class="regLabel">
+                  Set A Password<span class="req">*</span>
+                </label>
+                <input type="password"required autocomplete="off"/>
+              </div>
+              <button type="submit" class="button button-block"/>Get Started</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-content-login">
+          <div id="login">     
+            <h1>Welcome Back!</h1>
+            <form action="/" method="post">
+              <div class="field-wrap">
+              <label class="regLabel">
+                Email Address<span class="req">*</span>
+              </label>
+              <input type="email"required autocomplete="off"/>
+            </div>
+            <div class="field-wrap">
+              <label class="regLabel">
+                Password<span class="req">*</span>
+              </label>
+              <input type="password"required autocomplete="off"/>
+            </div>
+            <p class="forgot"><a href="#">Forgot Password?</a></p>
+            <button class="button button-block"/>Log In</button>
+          </form>
+          </div>
+        </div><!-- tab-content -->
+  </div>
+    <footer>Copyright &copy; imageTrust.com</footer>
+  </body>
+</html>
