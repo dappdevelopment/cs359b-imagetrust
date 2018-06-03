@@ -14,11 +14,11 @@ var sqlConnection = mysql.createConnection({
 
 
 
-function addUser(userName="null", firstName="null", lastName="null", 
-                 passHash="null", keyLink="null") {
+function addUser(userName, firstName, lastName, 
+                 passHash, keyLink) {
  
   var options = {
-    host: kieyLink, //'google.com',
+    host: keyLink, //'google.com',
     port: 443,
     method: 'GET'
   };
@@ -61,5 +61,38 @@ function addUser(userName="null", firstName="null", lastName="null",
   req.end();
 }
 
-addUser("h", "e", "l", "l", "o");
-//req.end();
+
+function checkUser(userName, passHash) {
+
+  sqlConnection.connect((err) => {
+    if (err) {
+      console.log('Error connecting to Db');
+      return;
+    }
+    console.log('Connection established');
+  });
+
+  var sql = "SELECT Password FROM userInfoTable2 WHERE UserName = ?";
+  var value = [userName]
+  sqlConnection.query(sql, value, function (err, result) {
+    if (err) {
+      console.log("error");
+      sqlConnection.end();
+      return false;
+    }
+    console.log("result: " + JSON.stringify(result));
+    console.log(result[0].Password);
+
+    sqlConnection.end();
+    if (passHash == result[0].Password) {
+      console.log("correct pass");
+      return true;
+    }
+    else {
+      console.log("incorrect pass");
+      return false;
+    }
+  });
+}
+
+
