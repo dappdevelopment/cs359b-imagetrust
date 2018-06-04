@@ -1,1 +1,60 @@
+<html>
+  <head>
+    <title>ImageTrust</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/trial.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <header><a href="main.html" id="imageTrust">imageTrust</header>
+  <body>
+      <div class = "nav-col">
+        <nav><ul>
+          <li><a href="validation.html">Software Publishing</a></li><br><br>
+          <li><a href="verification.html">Software Verification</a></li><br><br>
+          <li><a href="licensing.html">Software Licensing</a></li>
+          <li><a class="active" href="buylicense.html">Buy License</a></li>
+        </ul></nav>
+      <div class = "softwareValidation">
+        <div class="dropdown">
+          <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
+            <option value="companyName">Entity Name</option>
+            <option value="company1">Company 1</option>
+	        <option value="company2">Company 2</option>
+	      </select><br><br>
+        </div><br>
+        <div class="dropdown">
+            <select name="softwarePackageName" id="softwarePackage"><label for="softwarePackageName">Software Package</label>
+                  <option value="companyName">Software Package</option>
+                  <option value="company1">Ubuntu_14</option>
+                  <option value="company2">Ubuntu_16</option>
+            </select><br><br>
+        </div><br>
+        <div class="radio_home"></div>
+
+        <button onclick="createRadioButton()" value="Create Radio Button">License Pricing Options</button>
+
+
+    
+        <button onclick="app()" id="verifyBTN">Verify File</button><br><br><br>
+        <div id="verificationResult"></div><br><br>
+        <div class = "fileDetailsSec">
+          <div class = "fileDetails">
+            <p id="fileDetailsText"></p>
+            <p id="fileName"></p>
+	    <p id="hashValue"></p>
+            <p id="company"></p>
+	    <p id="timeStamp"></p>
+	  </div>
+        </div>
+      </div>
+      </div>
+    <footer>Copyright &copy; imageTrust.com</footer>
+  </body>
+</html>
  
