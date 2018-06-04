@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "./Ownable.sol";
+import "./ownable.sol";
 import "./ERC721.sol";
 import "./ERC721BasicToken.sol";
 
@@ -161,6 +161,12 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
 
     allTokensIndex[_tokenId] = allTokens.length;
     allTokens.push(_tokenId);
+  }
+
+  function mint(address _to, uint256 _tokenId, string _uri) public onlyOwnerIMGT {
+
+    _mint(_to, _tokenId);
+    _setTokenURI(_tokenId, _uri); 
   }
 
   /**
