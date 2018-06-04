@@ -1,4 +1,5 @@
 var https = require('https');
+var http = require('http');
 var mysql = require('mysql');
 
 
@@ -9,7 +10,18 @@ var sqlConnection = mysql.createConnection({
   database: "userInformation"
 })
 
-
+var server = http.createserver(function(req, res) {
+  res.writehead(200,{"Content-Type":"text\plain"});
+  if (req.method == "POST"){
+      console.log("POST");
+      req.on('data', function(data) {
+        console.log(data);
+      });
+    }
+  else {
+    console.log("REceived Post request");
+  }
+});
 
 
 
@@ -94,5 +106,7 @@ function checkUser(userName, passHash) {
     }
   });
 }
+
+server.listen(8000);
 
 
