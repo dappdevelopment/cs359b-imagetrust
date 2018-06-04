@@ -1,5 +1,6 @@
 pragma solidity ^0.4.23;
 
+import "./Ownable.sol";
 import "./ERC721.sol";
 import "./ERC721BasicToken.sol";
 
@@ -10,7 +11,7 @@ import "./ERC721BasicToken.sol";
  * Moreover, it includes approve all functionality using operator terminology
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
-contract licenseToken is ERC721, ERC721BasicToken {
+contract licenseToken is Ownable, ERC721, ERC721BasicToken {
   // Token name
   string internal name_;
 
