@@ -177,15 +177,19 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
     _setTokenURI(_tokenId, _uri); 
   }
 
-  function purchase(address _buyer, uint256 _priceWei, string _license) public {
+  function purchase(uint256 _priceWei, string _license) public returns(string uri) {
 
     licenseFund_.transfer(_priceWei);
 
-    _mint(_buyer, currentId_);
-    _setTokenURI(currentId_, _license);
+    _mint(msg.sender, currentId_);
+    uri = _license
+    _setTokenURI(currentId_, uri);
     currentId_ += 1;
+    return uri;
   }
 
+  //function getLatestLicense(address _usr) public view {
+  //}
 
   /**
    * @dev Internal function to burn a specific token
