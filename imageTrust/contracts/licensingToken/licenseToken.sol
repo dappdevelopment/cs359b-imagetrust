@@ -18,6 +18,12 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
   // Token symbol
   string internal symbol_;
 
+  // Current token Id
+  uint256 internal currentId_;
+
+  // Address to pay for purchasing
+  address internal licenseFund_;
+
   // Mapping from owner to list of owned token IDs
   mapping(address => uint256[]) internal ownedTokens;
 
@@ -36,9 +42,11 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
   /**
    * @dev Constructor function
    */
-  constructor(string _name, string _symbol) public {
+  constructor(string _name, string _symbol, address _licenseFund) public {
     name_ = _name;
     symbol_ = _symbol;
+    currentId_ = 0;
+    licenseFund_ = _licenseFund;
   }
 
   /**
@@ -168,6 +176,16 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
     _mint(_to, _tokenId);
     _setTokenURI(_tokenId, _uri); 
   }
+
+  function purchase(address _buyer, uint256 _priceWei, string _license) public {
+
+    licenseFund_.transfer(_priceWei);
+
+    _mint(_buyer, currentId_);
+    _setTokenURI(currentId_, _license);
+    currentId_ += 1;
+  }
+
 
   /**
    * @dev Internal function to burn a specific token
