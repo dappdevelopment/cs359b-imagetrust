@@ -35,6 +35,37 @@ app.get(contextPath + '/:id', function (req, res) {
 });
 
 
+app.post('/api/login', function(req, res) {
+
+  var sql = "SELECT Password FROM userInfoTable2 WHERE UserName = ?";
+  var value = [req.body.userName];
+  var query = mysql.format(sql, value);
+
+  sqlConn.query(query, function (err, rows, fields) {
+    if (err) {
+      res.status(400).send({
+        message: 'Username is not found.'
+      });
+    }
+    
+    console.log("got rows");
+    res.status(
+      rows.map((row) => {
+        console.log(row);
+        if (row.Password == req.body.passHash) {
+          console.log("matched");
+          return 200;
+        }
+        else {
+          console.log("no match");
+          return 401;
+        }
+      })
+    ).send();
+  });
+});
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
