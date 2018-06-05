@@ -7,7 +7,7 @@
       <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
-      <script src="js/signupLogin.js"></script>
+      <script src="js/login.js"></script>
       <link rel="stylesheet" type="text/css" href="css/signupLogin.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -21,21 +21,20 @@
             
           <div class="anchor" id="login" name="login" style="display: block;">   
               <h1>Welcome Back!</h1>
-              <form action="js/signupLogin.js" method="post">
-                    <div class="field-wrap">
+                <div class="field-wrap">
                         <label>
                         <span class="req"></span>
                         </label>
-                        <input type="text"required autocomplete="off" placeholder="Username*"/>
+                        <input type="text" id="userName" required autocomplete="off" placeholder="Username*"/>
                     </div>
                     <div class="field-wrap">
                         <label>
                         <span class="req"></span>
                         </label>
-                        <input type="password"required autocomplete="off" placeholder="Set A Password*"/>
+                        <input type="password" id="password" required autocomplete="off" placeholder="Set A Password*"/>
                     </div>
                   <p class="forgot"><a href="#">Forgot Password?</a></p>
-                  <button class="button button-block"/>Log In</button>
+                  <button type="submit" class="button button-block" id="loginSubmit" onclick="loginData()">Log In</button>
               </form>
           </div>
       </div><!-- tab-content -->
