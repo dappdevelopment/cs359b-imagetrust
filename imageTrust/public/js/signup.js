@@ -74,7 +74,7 @@ async function addNewUser() {
     keyLink   : inpCompanyURL,
     key       : userAccount
   }
-  fetch('/api/newUser', {
+  fetch('/imagetrust/api/newUser', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
