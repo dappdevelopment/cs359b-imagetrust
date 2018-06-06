@@ -59,3 +59,59 @@ footer  {
     overflow: hidden;
     background-color: var(--dark-color);
 }
+#validateBTN, #verifyBTN  {
+    border: none;
+    font-size: 20px;
+    text-align: center;
+border-radius: 8px;
+width: 180px;
+height: 40px;
+background-color: #86af08;
+    color: white;
+    font-family: 'Raleway','Source Sans Pro', 'Arial';
+    }
+.button {
+    border:0;
+    outline:none;
+    border-radius:0;
+    padding:15px 0;
+    font-size:2rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    background:var(--text-color);
+    color:white;
+    transition:all.5s ease;
+    -webkit-appearance: none;
+}
+.button:hover, :focus {
+    background:var(--dark-color);
+  }
+
+.button-block {
+    display:block;
+    width:96%;
+    font-family: var(--font-type);
+}
+.para{
+    color: var(--dgray-color);
+    font-size: 20px;
+    text-align: center;
+    padding: 1em 1em 1em 1em;
+    margin: 0px;
+}
+.dropdown select {
+    border: 1px solid;
+    border-color: #1a9e67;
+    font-size: 20px;
+    text-align: center;
+    padding: 0px;
+    width: 180px;
+    height: 40px;
+    color: #1a9e67;
+    background-color: var(--dark-color);
+    font-family: 'Raleway','Source Sans Pro', 'Arial';
+    }
+.dropdown:hover .dropdown-content {
+    background-color: var(--dgray-color);
+    }
