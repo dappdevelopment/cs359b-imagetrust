@@ -59,7 +59,7 @@ async function addNewUser() {
     keyLink   : inpCompanyURL,
     key       : userAccount
   }
-  fetch('/api/newUser', {
+  fetch('/imagetrust/api/newUser', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -79,17 +79,27 @@ async function purchaseLicense() {
 
   initVals = await init("contractJSON/licenseToken.json");
 
-  web3 = initVals.web3_ // Ethereum provider injected by MetaMask
+  web3 = initVals.web3_; // Ethereum provider injected by MetaMask
   var userAccount = initVals.userAccount_;
   var contract = initVals.contract_;
 
-  var licenseType = "software1";
+  var sel = document.getElementById("companyName");
+  var companyName = sel.options[sel.selectedIndex].value;
+
+  var licenseType = "software1"; //document.getElementById("firstName").value;
+  
+
+  
+
+
 
   let data = {
-     license: licenseType
+     license: licenseType,
+     company: companyName
+
   };
 
-  await fetch('/api/getPrice', {
+  await fetch('/imagetrust/api/getPrice', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

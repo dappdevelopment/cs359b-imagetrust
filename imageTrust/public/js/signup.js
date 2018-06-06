@@ -83,7 +83,7 @@ async function addNewUser() {
   })
   .then(function(res) {
     setTimeout(function() {
-      window.location.href="../validation.html";
+      window.location.href="../publish.html";
     }, 1000);
   });
 }

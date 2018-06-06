@@ -48,7 +48,7 @@ function app()	{
   
   var contract;
   var userAccount;
-  var contractDataPromise = $.getJSON('codeValidation.json');
+  var contractDataPromise = $.getJSON('contractJSON/codeVerification.json');
   var networkIdPromise = web3.eth.net.getId(); // resolves on the current network id
   var accountsPromise = web3.eth.getAccounts(); // resolves on an array of accounts
       
