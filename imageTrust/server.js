@@ -37,7 +37,7 @@ app.get(contextPath + '/:id', function (req, res) {
 
 app.post('/api/login', function(req, res) {
 
-  var sql = "SELECT Password FROM userInfo WHERE UserName = ?";
+  var sql = "SELECT Password, FirstName, LastName, Company FROM userInfo WHERE UserName = ?";
   var value = [req.body.userName];
   var query = mysql.format(sql, value);
 
@@ -53,20 +53,22 @@ app.post('/api/login', function(req, res) {
     }
     
     console.log("got rows");
-    res.status(
-      rows.map((row) => {
+    rows.map((row) => {
 
-        console.log(row);
-        if (row.Password == req.body.passHash) {
-          console.log("matched");
-          return 200;
-        }
-        else {
-          console.log("no match");
-          return 401;
-        }
-      })
-    ).send();
+      console.log(row);
+      if (row.Password == req.body.passHash) {
+        console.log("matched");
+        res.status(200).send( {
+            firstName : row.FirstName,
+            lastName  : row.LastName,
+            company   : row.Company
+        });
+      }
+      else {
+        console.log("no match");
+        res.status(401).send();
+      }
+    })
   });
 });
 
