@@ -3,6 +3,8 @@ var allFileNames = [];
 var allFileHashes = [];
 var allFileDates = [];
 var Nfiles = 0;
+var firstName = null;
+var lastName  = null;
 var companyName = null;
 
 
@@ -30,7 +32,7 @@ async function loginData() {
      console.log(res.status);
     if (res.status == 200) {
       console.log("signedin");
-      window.location.href="../validation.html";
+      return res.json();
     }
     else if (res.status == 401) {
       console.log("failedin");
@@ -38,6 +40,11 @@ async function loginData() {
     else {
       throw err;
     }
+  }).then(function(jres) {
+    firstName 	= jres.firstName;
+    lastName  	= jres.lastName;
+    companyName = jres.company;
+    window.location.href="../validation.html";
   });
 }
 
