@@ -82,23 +82,31 @@ async function purchaseLicense() {
   web3 = initVals.web3_; // Ethereum provider injected by MetaMask
   var userAccount = initVals.userAccount_;
   var contract = initVals.contract_;
-
+console.log("Is it here");
+  $("#companyName").change(function() {
   var sel = document.getElementById("companyName");
   var companyName = sel.options[sel.selectedIndex].value;
+  });
+  $("#productName").change(function() {
+  var sel = document.getElementById("productName");
+  var productName = sel.options[sel.selectedIndex].value; //document.getElementById("firstName").value;
+  });
 
-  var licenseType = "software1"; //document.getElementById("firstName").value;
-  
-
-  
+  $("#license-options").change(function() {
+  var licenseType = $("input:radio[name=option]:checked").val();
+  });
 
 
 
   let data = {
      license: licenseType,
-     company: companyName
+     company: companyName,
+     product: productName
 
   };
 
+  console.log("data");
+  console.log(data);
   await fetch('/imagetrust/api/getPrice', {
     method: 'POST',
     headers: {

@@ -8,6 +8,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
       <script src="js/app.js"></script>
+      <script src="js/licensing.js"></script>
       <link rel="stylesheet" type="text/css" href="css/publish.css">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -39,9 +40,9 @@
                                     </select><br><br>
                                 </div><br>
                                 <form class="license-options" action="">
-                                    <input type="radio" name="time" value="6months"> 6 months,   1.2 Ether<br>
-                                    <input type="radio" name="time" value="12months"> 1 year,   2.2 Ether<br>
-                                    <input type="radio" name="time" value="24months"> 2 years,   4 Ether<br>
+                                    <input type="radio" name="time" id="o1" value="6months"> 6 months,   1.2 Ether<br>
+                                    <input type="radio" name="time" id="o2" value="12months"> 1 year,   2.2 Ether<br>
+                                    <input type="radio" name="time" id="o3" value="24months"> 2 years,   4 Ether<br>
                                 </form>
                                 <button onclick="purchaseLicense()" id="validateBTN">Buy License</button>
                                 <div class = "licensePurchaseDetails">
