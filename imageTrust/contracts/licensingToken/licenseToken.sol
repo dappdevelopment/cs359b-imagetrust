@@ -39,6 +39,9 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
   // Optional mapping for token URIs
   mapping(uint256 => string) internal tokenURIs;
 
+  // Events
+  event purchaseEvent(address _buyer, uint256 _price, string _license);
+
   /**
    * @dev Constructor function
    */
@@ -177,19 +180,25 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
     _setTokenURI(_tokenId, _uri); 
   }
 
+  //function purchase(uint256 _priceWei, string _license) public returns(string uri) {
   function purchase(uint256 _priceWei, string _license) public returns(string uri) {
 
-    licenseFund_.transfer(_priceWei);
+    //licenseFund_.transfer(_priceWei);
 
     _mint(msg.sender, currentId_);
-    uri = _license
+    uri = _license;
     _setTokenURI(currentId_, uri);
     currentId_ += 1;
+
+    emit purchaseEvent(msg.sender, _priceWei, _license);
+
     return uri;
   }
 
-  //function getLatestLicense(address _usr) public view {
-  //}
+  function getLatestLicense() public view returns (string) {
+    uint256 lastTokenIndex = ownedTokens[msg.sender].length.sub(1);
+    return tokenURIs[lastTokenIndex];
+  }
 
   /**
    * @dev Internal function to burn a specific token
