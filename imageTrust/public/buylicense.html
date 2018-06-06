@@ -1,40 +1,71 @@
+ 
 <html>
-  <head>
-    <title>ImageTrust</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
-    <script src="js/app.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/app.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <header><a href="main.html" id="imageTrust">imageTrust</header>
-  <body>
-    <div class = "nav-col">
-      
-      <nav><ul>
-        <li><a href="validation.html">Software Publishing</a></li><br><br>
-        <li><a href="verification.html">Software Verification</a></li><br><br>
-        <li><a class="active" href="buylicense.html">Software Licensing</a></li>
-      </ul></nav>
-      <div class = "val-wrapper">
-        <div class = "softwareValidation">
-          <div class="dropdown">
-            <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
-              <option value="companyName">Entity Name</option>
-              <option value="company1">Company 1</option>
-	            <option value="company2">Company 2</option>
-	          </select><br><br>
-          </div><br>
-          <button onclick="purchaseLicense()" id="validateBTN">Buy License</button>
-	        <div id="validationResult"></div><br><br>
-          <div class = "licensePurchaseDetails">
-          </div>
+    <head>
+      <title>ImageTrust</title>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+      <script src="js/app.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/publish.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>    
+        <header>
+            <a>imageTrust</a>
+            <p id="user">Hi, Jenn</p>
+        </header>
+        <div class = "main-content">
+            <div class = "option-buttons">
+                <div class="row">
+                    <div class="lic-column">
+                        <div class = "softwareValidation">
+                                <p class="para" >Purchase ERC721 Token License</p>
+                            <div class ="but-list">
+                                
+                                <div class="dropdown">
+                                    <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
+                                        <option value="companyName">Entity Name</option>
+                                        <option value="company1">Company 1</option>
+                                        <option value="company2">Company 2</option>
+                                    </select><br><br>
+                                </div><br>
+                                <div class="dropdown">
+                                    <select name="productName" id="productName"><label for="productName">Product/Device Name</label>
+                                        <option value="productName">Product/Device</option>
+                                        <option value="productA">Product A</option>
+                                        <option value="ProductB">Product B</option>
+                                    </select><br><br>
+                                </div><br>
+                                <form class="license-options" action="">
+                                    <input type="radio" name="time" value="6months"> 6 months,   1.2 Ether<br>
+                                    <input type="radio" name="time" value="12months"> 1 year,   2.2 Ether<br>
+                                    <input type="radio" name="time" value="24months"> 2 years,   4 Ether<br>
+                                </form>
+                                <button onclick="purchaseLicense()" id="validateBTN">Buy License</button>
+                                <div class = "licensePurchaseDetails">
+                            </div>
+                            
+                            
+                                <div class = "tokenDetails">
+                                    <p id="fileDetailsText"></p>
+                                    <p id="fileName"></p>
+                                    <p id="hashValue"></p>
+                                    <p id="company"></p>
+                                    <p id="timeStamp"></p>
+                                </div>
+                        
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="lic-column">
+                        <h2>Licenses Owned</h2>
+                    </div>
+                    </div> 
+            </div>
         </div>
-      </div>
-    </div>
-    <footer>Copyright &copy; imageTrust.com</footer>
-  </body>
-</html> 
+        <footer>Copyright &copy; imageTrust</footer>
+    </body>
+  </html>

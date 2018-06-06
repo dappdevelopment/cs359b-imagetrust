@@ -147,6 +147,5 @@ function app()	{
       $('.tab-content > div').not(target).hide();
       $(target).fadeIn(600);
     });  
-  
+  }  
 $(document).ready(app);  
-  }

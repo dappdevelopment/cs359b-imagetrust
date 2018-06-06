@@ -1,69 +1,27 @@
 <html>
-  <head>
-    <title>ImageTrust</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
-    <script src="js/signupLogin.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/signupLogin.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>    
-    <header>imageTrust</header>
-    <div class="form">   
-        <ul class="tab-group">
-          <li class="tab active"><a href="index.html">Sign Up</a></li>
-          <li class="tab"><a href="login.html">Log In</a></li>
-        </ul>
-        
-        <div class="tab-content">
-          <div id="signup" class="signup">     
-            <form action="js/app.js" method="post">
-                <div class="top-row">
-                    <div class="field-wrap">
-                        <label>
-                        <span class="req"></span>
-                        </label>
-                        <input type="text" required autocomplete="off" placeholder = "First Name*"/>
-                    </div>
-                    <div class="field-wrap">
-                        <label>
-                        <span class="req"></span>
-                        </label>
-                        <input type="text"required autocomplete="off" placeholder = "Last Name*"/>
-                    </div>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                    <span class="req"></span>
-                    </label>
-                    <input type="url"required autocomplete="off" placeholder="Company Key URL*"/>
-                </div>
-                <div class="field-wrap">
-                    <label>
-                    <span class="req"></span>
-                    </label>
-                    <input type="email"required autocomplete="off" placeholder="Email Address*"/>
-                </div>
-                <div class="field-wrap">
-                        <label>
-                        <span class="req"></span>
-                        </label>
-                        <input type="text"required autocomplete="off" placeholder="UserName*"/>
-                    </div>
-                <div class="field-wrap">
-                    <label>
-                    <span class="req"></span>
-                    </label>
-                    <input type="password"required autocomplete="off" placeholder="Set A Password*"/>
-                </div>
-                <button type="submit" class="button button-block"/>Get Started</button>
-            </form>
-        </div>  
-        <div class="anchor" id="login" name="login" style="display: block;"></div> 
-    </div><!-- tab-content -->
-  <footer>Copyright &copy; imageTrust.com</footer>
-</body>
-</html>
+    <head>
+      <title>ImageTrust</title>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+      <script src="js/signupLogin.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/app_1.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>    
+        <header>imageTrust</header>
+        <div class = "main-content">
+            <h1>imageTrust - Publish, Validate and ...</h1>
+            <div class = "option-buttons">
+                <div class="row">
+                    <div class="column"><h2>Publish your code on the Blockchain</h2><li = "publish-tab"><a class = "tab-option-group" href="signupLogin.html">Publish Code</a></li></div>
+                    <div class="column"><h2>Verify the Integrity of your software packages</h2><li = "publish-tab"><a class = "tab-option-group" href="verify.html">Verify Code</a></li></div>
+                    <div class="column"><h2>Buy ERC721 license Tokens Pay with Ether</h2><li = "publish-tab"><a class = "tab-option-group" href="buylicense.html">Buy License</a></li></div>
+                </div><br> 
+            </div>
+        </div>
+        <footer>Copyright &copy; imageTrust.com</footer>
+    </body>
+  </html>
