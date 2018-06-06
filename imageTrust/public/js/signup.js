@@ -48,3 +48,42 @@ $('.tab').click(function(){
 //  $('.tab-content').hide(); 
   $('.tab-content, .anchor').toggle();
 });
+
+
+async function addNewUser() {
+
+  if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
+  web3 = new Web3(web3.currentProvider); // MetaMask injected Ethereum provider
+
+  // Get the account of the user from metamask
+  const userAccounts = await web3.eth.getAccounts(); // resolves on an array of accounts
+  userAccount = userAccounts[0];
+
+  var inpFirstName  = document.getElementById("firstName").value;
+  var inpLastName   = document.getElementById("lastName").value;
+  var inpCompanyURL = document.getElementById("companyUrl").value;
+  var inpEmail      = document.getElementById("emailAdd").value;
+  var inpUserName   = document.getElementById("userName").value;
+  var inpPassWord   = document.getElementById("password").value;
+
+  let certInfo = {
+    userName  : inpUserName,
+    firstName : inpFirstName,
+    lastName  : inpLastName,
+    passHash  : inpPassWord,
+    keyLink   : inpCompanyURL,
+    key       : userAccount
+  }
+  fetch('/api/newUser', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(certInfo),
+  })
+  .then(function(res) {
+    setTimeout(function() {
+      window.location.href="../validation.html";
+    }, 1000);
+  });
+}
