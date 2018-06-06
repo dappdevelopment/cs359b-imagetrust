@@ -115,3 +115,40 @@ background-color: #86af08;
 .dropdown:hover .dropdown-content {
     background-color: var(--dgray-color);
     }
+    #imageTrust:link {
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 30px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
+#imageTrust:visited {
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 30px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
+#imageTrust:hover {
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 30px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
+#imageTrust:active {
+        color: #1a9e67;
+        background-color: transparent;
+        text-decoration: none;
+        font-size: 30px;
+        font-family: 'Raleway','Source Sans Pro', 'Arial';
+        }
+        input[type=text], input[type=password] {
+            width: 25%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        text-align: center;
+            }
