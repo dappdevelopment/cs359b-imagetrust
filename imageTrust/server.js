@@ -35,7 +35,7 @@ app.get(contextPath + '/:id', function (req, res) {
 });
 
 
-app.post('/api/login', function(req, res) {
+app.post('/imagetrust/api/login', function(req, res) {
 
   var sql = "SELECT Password, FirstName, LastName, Company FROM userInfo WHERE UserName = ?";
   var value = [req.body.userName];
@@ -94,7 +94,7 @@ async function test(link) {
   return cert;
 }
 
-app.post('/api/newUser', function(req, res) {
+app.post('/imagetrust/api/newUser', function(req, res) {
 
   var options = {
     host: req.body.keyLink, //'google.com',
@@ -145,7 +145,7 @@ app.post('/api/newUser', function(req, res) {
 });
 
 
-app.post('/api/getPrice', function(req, res) {
+app.post('/imagetrust/api/getPrice', function(req, res) {
 
   var sql = "SELECT price FROM testlicenses WHERE name = ?";
   console.log(req.body.license);
