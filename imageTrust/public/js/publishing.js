@@ -8,7 +8,7 @@ var lastName  = null;
 var companyName = null;
 
 
-async function loginData() {
+async function userLogin() {
 
   console.log("in logindata");
   var inpUserName = document.getElementById("userName").value;
@@ -22,7 +22,7 @@ async function loginData() {
     passHash: inpPassword  //"superdupersecret",
   };
   console.log(lgDB);
-  fetch('/api/login', {
+  fetch('/imagetrust/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -30,9 +30,9 @@ async function loginData() {
     body: JSON.stringify(lgDB),
   }).then(function(res) {
      console.log(res.status);
-    if (res.status == 200) {
+    if (true) { //(res.status == 200) {
       console.log("signedin");
-      return res.json();
+      window.location.href="/imagetrust/publish.html";
     }
     else if (res.status == 401) {
       console.log("failedin");
@@ -40,14 +40,10 @@ async function loginData() {
     else {
       throw err;
     }
-  }).then(function(jres) {
-    firstName 	= jres.firstName;
-    lastName  	= jres.lastName;
-    companyName = jres.company;
-    window.location.href="../validation.html";
   });
 }
 
+/*
 
 async function init(contractName) {
     console.log("Using web3 version: " + Web3.version);
@@ -149,7 +145,7 @@ async function publishCode() {
 
   if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
 
-  initVals = await init("contractJSON/codeValidation.json");
+  initVals = await init("contractJSON/codeVerification.json.json");
 
   web3 = initVals.web3_ // Ethereum provider injected by MetaMask
   var userAccount = initVals.userAccount_;
@@ -166,7 +162,7 @@ async function validateCode() {
 
   if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
 
-  initVals = await init("contractJSON/codeValidation.json");
+  initVals = await init("contractJSON/codeVerification.json.json");
 
   web3 = initVals.web3_ // Ethereum provider injected by MetaMask
   var userAccount = initVals.userAccount_;
@@ -179,7 +175,6 @@ async function validateCode() {
 }
 
 
-/*----------Upload Files, Calculate Hash, Timestamp and Display in HTML--------*/
 $("#file-dialog").change(function() {
   handleFiles(this.files);
 });
@@ -195,4 +190,4 @@ $('#verifyBTN').click(function () {
   validateCode();
 });
 
-
+*/

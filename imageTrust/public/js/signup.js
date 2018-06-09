@@ -83,7 +83,7 @@ async function addNewUser() {
   })
   .then(function(res) {
     setTimeout(function() {
-      window.location.href="../publish.html";
+      window.location.href="/imagetrust/publish.html";
     }, 1000);
   });
 }

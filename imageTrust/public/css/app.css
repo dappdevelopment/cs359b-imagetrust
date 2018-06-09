@@ -134,7 +134,7 @@ h1 {
   text-align:center;
   color:white;
   font-weight:300;
-  margin:0 0 140px;
+  margin:0 0 40px;
 }
 h2{
     text-align: center;
@@ -201,3 +201,10 @@ h2{
         box-sizing: border-box;
     text-align: center;
         }
+.para{
+    color: var(--dgray-color);
+    font-size: 20px;
+    text-align: center;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    margin: 0px;
+}

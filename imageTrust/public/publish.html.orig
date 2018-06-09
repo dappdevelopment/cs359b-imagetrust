@@ -13,7 +13,7 @@
         </head>
         <body>    
             <header>
-                <a href="index.html" id="imageTrust">imageTrust</a>
+                <a>imageTrust</a>
                 <p id="user"></p>
             </header>
             <div class = "main-content">
@@ -25,13 +25,13 @@
                                 <div class ="but-list">
                                     
                                     <div class="dropdown">
-                                        <select name="EntityName" id="companyName"><label for="EntityName">Company Name</label>
-                                            <option value="companyName">Company Name</option>
+                                        <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
+                                            <option value="companyName">Entity Name</option>
                                             <option value="company1">Company 1</option>
-                                            <option value="company2">Compnay 2</option>
+                                            <option value="company2">Company 2</option>
                                         </select><br><br>
                                     </div><br>
-                                    <div class= "file-upload"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div>
+                                    <div class= "file-upload"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div><br><br>
                                     <button onclick="app()" id="validateBTN">Validate and Push</button>
                                 </div>
                                 
@@ -46,7 +46,7 @@
                                     
                                     <p class="para">Verify Published Code</p>
                                 <div class = "but-list">
-                                    <div class= "file-upload"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div>
+                                    <div class= "file-upload"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div><br><br>
                                     <button onclick="app()" id="verifyBTN">Verify File</button><br><br><br>
                                     <div id="verificationResult"></div><br><br>
                                 </div>
@@ -73,27 +73,17 @@
                                             <option value="company2">Company 2</option>
                                             </select><br><br>
                                         </div><br>
-					<div class="dropdown">
-						<select name="EntityName" id="companyName"><label for="EntityName">Product/Device</label>
-					<option value="companyName">Product/Device</option>
-                                            <option value="company1">Product A</option>
-                                            <option value="company2">Product B</option>
-                                            </select><br><br>
-                                        </div><br><br><br><br><br><br><br><br>
-					<p>License Pricing Framework Options - to come!</p><br><br><br><br><br><br> 
-	
-                                        <button onclick="purchaseLicense()" id="validateBTN">Publish Options</button>
+                                        <button onclick="purchaseLicense()" id="validateBTN">Buy License</button>
                                         <div class = "licensePurchaseDetails">
                                         </div>
                                       </div>
                         </div>
                         </div>
                         <div class="column">
-			<div class="softwareValidation">
-                            <p class="para">Publishing Analytics</p>
-			</div>
+                            <h2>Publishing Analytics</h2>
                         </div> 
                 </div>
             </div>
+            <footer>Copyright &copy; imageTrust</footer>
         </body>
       </html>

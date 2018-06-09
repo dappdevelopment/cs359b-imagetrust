@@ -1,0 +1,115 @@
+    1  ls
+    2  vi nginx.conf 
+    3  ls cs359b-imagetrust/imageTrust/app/
+    4  ls /
+    5  readlink -f cs359b-imagetrust/imageTrust/app/
+    6  cd
+    7  ls
+    8  ls www/
+    9  rm -rf www/
+   10  ls
+   11  ln -s cs359b-imagetrust/imageTrust/app www
+   12  ls
+   13  ls www
+   14  exit
+   15  ls
+   16  cd cs359b-imagetrust/
+   17  ;s
+   18  ls
+   19  cd imageTrust/
+   20  git pull
+   21  git branch
+   22  ls
+   23  cd app/
+   24  ls
+   25  cd js
+   26  ls
+   27  vi app.js 
+   28  ls
+   29  cd cs359b-imagetrust/imageTrust/
+   30  ls
+   31  cd app/
+   32  ls
+   33  vi codeValidation.json 
+   34  vi js/app.js 
+   35  ls
+   36  cd www
+   37  ls
+   38  cd js/
+   39  ls
+   40  vi app.js 
+   41  rm .app.js.swp 
+   42  vi app.js 
+   43  ls
+   44  cd cs359b-imagetrust/
+   45  ls
+   46  cd imageTrust/
+   47  ls
+   48  cd build/
+   49  ls
+   50  cd contracts/
+   51  ls
+   52  vi codeValidation.json 
+   53  ls
+   54  vi Migrations.json 
+   55  cd ../../
+   56  ls
+   57  cd migrations/
+   58  ls
+   59  cd ../
+   60  ls
+   61  cd ../../
+   62  ls
+   63  cd app/
+   64  ls
+   65  cd ../../
+   66  ls
+   67  cd app/
+   68  ls
+   69  vi validation.html 
+   70  ls
+   71  cd css/
+   72  ls
+   73  vi app.css 
+   74  pwd
+   75  ls
+   76  vi nginx.conf 
+   77  ls
+   78  vi .nginx.conf.swp 
+   79  rm .nginx.conf.swp 
+   80  cd www
+   81  vi server.js
+   82  ls
+   83  cd cs359b-imagetrust/
+   84  ls
+   85  cd imageTrust/
+   86  ls
+   87  mkdir config
+   88  ls
+   89  cd config/
+   90  ls
+   91  vi sql.js
+   92  cd ../
+   93  git pull
+   94  git stash
+   95  git pull
+   96  ls
+   97  cd cs359b-imagetrust/imageTrust/
+   98  ls
+   99  git pull
+  100  ls
+  101  exit
+  102  mysql
+  103  vi ~/mysql_credentials.txt 
+  104  mysql -u imagetrust -p
+  105  ls
+  106  cd cs359b-imagetrust/imageTrust/config/
+  107  ls
+  108  vi sql.js 
+  109  vi ~/mysql_credentials.txt 
+  110  vi sql.js 
+  111  ls
+  112  cd ../
+  113  git pull
+  114  ls
+  115  history > hist.txt
