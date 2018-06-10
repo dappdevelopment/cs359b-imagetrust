@@ -6,6 +6,7 @@
     --lyellow-color: #6ead3a;
     --dwhite-color: #efedef;
     --lgray-color: #ceccce;
+    --gray-color: #687384;
     --dgray-color: #4c4947;
     --lblack-color: #222022;
     --text-color: #1a9367;
@@ -33,19 +34,7 @@ header	{
     text-align: left;
     font-size: 30px
 }
-footer  {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 0.5em;
-    color: #606060;
-    background-color: #e0e0e0;
-    clear: left;
-    text-align: center;
-    font-family: var(--font-type);
-    } 
+
 a   {
     text-decoration:none;
     color: var(--text-color);

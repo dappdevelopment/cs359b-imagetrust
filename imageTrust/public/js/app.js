@@ -16,6 +16,12 @@ function app()	{
   });
 
         /*----------Upload Files, Calculate Hash, Timestamp and Display in HTML--------*/
+  $("#publishFile-dialog").change(function() {
+    handleFiles(this.files);
+  });
+  $("#verifyFile-dialog").change(function() {
+    vhandleFiles(this.files);
+  });
   $("#file-dialog").change(function() {
     handleFiles(this.files);
   });
@@ -32,10 +38,9 @@ function app()	{
         var date = new Date().toLocaleString();
         allFileDates.push(date);
         console.log("Hash is " + sha256Hash);
-	document.getElementById("fileDetailsText").innerHTML = "File Details";
-	document.getElementById("hashValue").innerHTML = "Hash Value of File: " + sha256Hash;
         document.getElementById("fileName").innerHTML = "File Name: " + fileName;
-	document.getElementById("timeStamp").innerHTML = "Time Stamp: " + date;
+	      document.getElementById("hashValue").innerHTML = "Hash Value of File: " + sha256Hash;    
+	      document.getElementById("timeStamp").innerHTML = "Time Stamp: " + date;
         document.getElementById("company").innerHTML = "Company Name: " + companyName;
       };
       reader.onerror = function() {
@@ -46,6 +51,30 @@ function app()	{
     Nfiles = files.length;
   }
   
+  function vhandleFiles(files) {
+    for (var i=0; i<files.length; i++) {
+      var fileName = files[i].name;
+      allFileNames.push(fileName);
+      // document.getElementById("fname").innerHTML = fileName;
+      var reader = new FileReader();
+      reader.onload = function() {
+        var sha256Hash = CryptoJS.SHA256(reader.result).toString();
+        allFileHashes.push(sha256Hash);
+        var date = new Date().toLocaleString();
+        allFileDates.push(date);
+        console.log("Hash is " + sha256Hash);
+        document.getElementById("vfileName").innerHTML = "File Name: " + fileName;
+	      document.getElementById("vhashValue").innerHTML = "Hash Value of File: " + sha256Hash;
+        
+      };
+      reader.onerror = function() {
+      console.error("Could not read the file");
+      };
+      reader.readAsBinaryString(files.item(i));
+    }
+    Nfiles = files.length;
+  }
+
   var contract;
   var userAccount;
   var contractDataPromise = $.getJSON('contractJSON/codeVerification.json');
