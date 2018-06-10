@@ -28,7 +28,10 @@ contract ERC721Enumerable is ERC721Basic {
 contract ERC721Metadata is ERC721Basic {
   function name() public view returns (string _name);
   function symbol() public view returns (string _symbol);
-  function tokenURI(uint256 _tokenId) public view returns (string);
+  function tokenURI(uint256 _tokenId) public view returns (
+      bytes32 company,
+      bytes32 software,
+      uint256 endDate);
 }
 
 
