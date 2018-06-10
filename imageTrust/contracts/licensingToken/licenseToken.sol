@@ -12,6 +12,7 @@ import "./ERC721BasicToken.sol";
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
 contract licenseToken is Ownable, ERC721, ERC721BasicToken {
+
   // Token name
   string internal name_;
 
@@ -37,7 +38,7 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
   mapping(uint256 => uint256) internal allTokensIndex;
 
   // Optional mapping for token URIs
-  mapping(uint256 => string) internal tokenURIs;
+  mapping(uint256 => licenseURI) internal tokenURIs;
 
   // Events
   event purchaseEvent(address _buyer, uint256 _price, string _license);
@@ -73,9 +74,18 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
    * @dev Throws if the token ID does not exist. May return an empty string.
    * @param _tokenId uint256 ID of the token to query
    */
-  function tokenURI(uint256 _tokenId) public view returns (string) {
+  function tokenURI(uint256 _tokenId) public view returns (
+        bytes32 company,
+        bytes32 software,
+        uint256 endDate) {
+
     require(exists(_tokenId));
-    return tokenURIs[_tokenId];
+
+    company = tokenURIs[_tokenId].company;
+    software = tokenURIs[_tokenId].software;
+    endDate = tokenURIs[_tokenId].endDate;
+
+    return;
   }
 
   /**
@@ -121,7 +131,7 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
    * @param _tokenId uint256 ID of the token to set its URI
    * @param _uri string URI to assign
    */
-  function _setTokenURI(uint256 _tokenId, string _uri) internal {
+  function _setTokenURI(uint256 _tokenId, licenseURI _uri) internal {
     require(exists(_tokenId));
     tokenURIs[_tokenId] = _uri;
   }
@@ -174,30 +184,53 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
     allTokens.push(_tokenId);
   }
 
-  function mint(address _to, uint256 _tokenId, string _uri) public onlyOwnerIMGT {
+  function mint(address _to, uint256 _tokenId, 
+              bytes32 _company,
+              bytes32 _software,
+              uint256 _endDate) onlyOwner {
+
+    licenseURI memory uri;
+    uri.company = _company;
+    uri.software = _software;
+    uri.endDate = _endDate;
 
     _mint(_to, _tokenId);
-    _setTokenURI(_tokenId, _uri); 
+    _setTokenURI(_tokenId, uri); 
   }
 
   //function purchase(uint256 _priceWei, string _license) public returns(string uri) {
-  function purchase(uint256 _priceWei, string _license) public returns(string uri) {
+  function purchase(uint256 _priceWei,
+              bytes32 _company,
+              bytes32 _software,
+              uint256 _endDate) public payable returns(bool success) {
 
-    //licenseFund_.transfer(_priceWei);
+    success = false;
+    require (msg.value == _priceWei);
+
+    licenseURI memory uri;
+    uri.company = _company;
+    uri.software = _software;
+    uri.endDate = _endDate;
+
+    licenseFund_.transfer(_priceWei);
 
     _mint(msg.sender, currentId_);
-    uri = _license;
     _setTokenURI(currentId_, uri);
     currentId_ += 1;
 
-    emit purchaseEvent(msg.sender, _priceWei, _license);
+    //emit purchaseEvent(msg.sender, _priceWei, _company, _software);
 
-    return uri;
+    success = true;
+
+    return;
   }
 
-  function getLatestLicense() public view returns (string) {
-    uint256 lastTokenIndex = ownedTokens[msg.sender].length.sub(1);
-    return tokenURIs[lastTokenIndex];
+  function getLicenses() public view returns(bytes32[]) {
+    bytes32[] memory licenses = new bytes32[](ownedTokens[msg.sender].length);
+    for (uint i=0; i<ownedTokens[msg.sender].length; i++) {
+      licenses[i] = tokenURIs[ownedTokens[msg.sender][i]].software;
+    }
+    return licenses;
   }
 
   /**
@@ -210,7 +243,7 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
     super._burn(_owner, _tokenId);
 
     // Clear metadata (if any)
-    if (bytes(tokenURIs[_tokenId]).length != 0) {
+    if (tokenURIs[_tokenId].exists) {
       delete tokenURIs[_tokenId];
     }
 

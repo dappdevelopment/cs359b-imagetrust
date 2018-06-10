@@ -6,6 +6,15 @@ pragma solidity ^0.4.23;
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
 contract ERC721Basic {
+
+  // URI information
+  struct licenseURI {
+    bool    exists;
+    bytes32 company;
+    bytes32 software;
+    uint256 endDate;
+  } 
+
   event Transfer(
     address indexed _from,
     address indexed _to,
