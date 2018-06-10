@@ -187,7 +187,7 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
   function mint(address _to, uint256 _tokenId, 
               bytes32 _company,
               bytes32 _software,
-              uint256 _endDate) onlyOwner {
+              uint256 _endDate) onlyOwner public {
 
     licenseURI memory uri;
     uri.company = _company;
