@@ -90,6 +90,7 @@ console.log("Is it here");
   $("#productName").change(function() {
   var sel = document.getElementById("productName");
   var productName = sel.options[sel.selectedIndex].value; //document.getElementById("firstName").value;
+  createRadioButton();
   });
 
   $("#license-options").change(function() {
@@ -127,5 +128,83 @@ console.log("Is it here");
       console.log(uri);
     });
 }
+/*
+function createRadioButton()
+            {
+              // var newRadioButton
+               //  = document.createElement(input(type='radio',name='radio',value='1st'));
+                var options = ["1", "2", "3", "4"];
+               //  for(i = 0, i<options.length, i++){
+                 var element = document.createElement("input");
+                 element.setAttribute("type", 'radio');
+                 element.setAttribute("name", "23");
+               //  }
+                 var foo = document.getElementById("fooBar");
+                 foo.appendChild(element);
+                 
+               //document.body.insertBefore(newRadioButton);
+            }
 
+*/
+$(document).ready(function(){
+$("#productName").change(function() {
+  document.getElementById("fooBar").innerHTML = "Yayy";
 
+ // var sel = document.getElementById("productName");
+ // var productName = sel.options[sel.selectedIndex].value; //document.getElementById("firstName").value;
+  createRadioButton();
+  });
+
+function createRadioButton(){
+            var questions =  [ 	
+              {questionId:"question1", formName:"form1",radioName:"gender",values:[  "6 months,  1.2 ether", "12 months,  1.8 ether" , "24 months,  3 ether"]},
+              
+                    ];
+              
+              
+              
+              //-- we iterate over each question
+              
+              for (i = 0; i < questions.length; i++) { 
+                 var question;
+                 var theInput;
+                 
+                 var thisQuestion = questions[i];
+                 
+                 //-- we get the values arrary for the question
+                 var theValues =   thisQuestion.values;
+                 
+                 //-- we creat a label element for the text label.
+                 var label = document.createElement( 'label');
+                 
+                 //-- we create the form element 
+                 var theForm = document.createElement("form");
+                 //-- we set the forms name
+                 theForm.setAttribute('name',thisQuestion.formName);
+               
+                //-- we iterate over each value and create a input for it and we add the value
+                for (q = 0; q < theValues.length; q++) { 
+                
+                theInput = document.createElement("input");
+              
+                theInput.setAttribute('type',"radio");
+                
+                theInput.setAttribute('name',thisQuestion.radioName);
+                theInput.setAttribute('value',theValues[q]);
+               
+                
+                //-- we add the input to its text label.  ( put it insdie of it )
+                label.appendChild(theInput);
+                label.innerHTML += "<span> " + theValues[q] + "</span><br>";
+                //--we add the label to the form.
+                theForm.appendChild( label);
+                }
+               
+                 //-- we get the correct Hype element to append to.
+               question = document.getElementById("licOptions");
+               question.appendChild(theForm);
+                
+              
+              }
+            }
+          });

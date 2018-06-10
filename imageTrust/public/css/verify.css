@@ -35,19 +35,6 @@ header	{
     font-size: 30px;
     text-decoration: none;
 }
-footer  {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 0.5em;
-    color: #606060;
-    background-color: #e0e0e0;
-    clear: left;
-    text-align: center;
-    font-family: var(--font-type);
-} 
 #user{
     float: right;
     font-size: 16px;
@@ -100,6 +87,13 @@ background-color: #86af08;
     padding: 1em 1em 1em 1em;
     margin: 0px;
 }
+.verify-para{
+    color: var(--lgray-color);
+    font-size: 20px;
+    text-align: center;
+    padding: 1em 1em 1em 1em;
+    margin: 0px;
+}
 .dropdown select {
     border: 1px solid;
     border-color: #1a9e67;
@@ -143,12 +137,3 @@ background-color: #86af08;
         font-size: 30px;
         font-family: 'Raleway','Source Sans Pro', 'Arial';
         }
-        input[type=text], input[type=password] {
-            width: 25%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        text-align: center;
-            }

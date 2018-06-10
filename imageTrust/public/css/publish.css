@@ -9,6 +9,7 @@
     --lyellow-color: #6ead3a;
     --dwhite-color: #efedef;
     --lgray-color: #ceccce;
+    --gray-color: #687384;
     --dgray-color: #4c4947;
     --lblack-color: #222022;
     --text-color: #1a9367;
@@ -39,29 +40,16 @@ header	{
     border-radius: 15px;
     text-decoration: none;
 }
-footer  {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 0.5em;
-    color: #606060;
-    background-color: #e0e0e0;
-    clear: left;
-    text-align: center;
-    font-family: var(--font-type);
-} 
 #user{
     float: right;
     font-size: 16px;
 }
 .column {
     float: left;
-    width: 33.33%;
+    width: 35%;
     height: 100%;
     list-style:none;
-    margin:0 0 40px 0;
+    margin:0 0 0px 0;
     border: 5px solid var(--under-color);
     border-radius: 15px;
 }
@@ -70,9 +58,37 @@ footer  {
       display: table;
       clear: both;
 }
+.column2 {
+    float: left;
+    width: 40%;
+    height: 100%;
+    list-style:none;
+    margin:0 0 0px 0;
+    border: 5px solid var(--under-color);
+    border-radius: 15px;
+}
+.column2:after {
+      content: "";
+      display: table;
+      clear: both;
+}
+.column3 {
+    float: left;
+    width: 25%;
+    height: 100%;
+    list-style:none;
+    margin:0 0 0px 0;
+    border: 5px solid var(--under-color);
+    border-radius: 15px;
+}
+.column3:after {
+      content: "";
+      display: table;
+      clear: both;
+}
 .lic-column {
     float: left;
-    width: 50%;
+    width: 70%;
     height: 100%;
     list-style:none;
     margin:0 0 40px 0;
@@ -80,6 +96,20 @@ footer  {
     border-radius: 15px;
 }
 .lic-column:after {
+      content: "";
+      display: table;
+      clear: both;
+}
+.lic-column2 {
+    float: left;
+    width: 30%;
+    height: 100%;
+    list-style:none;
+    margin:0 0 40px 0;
+    border: 5px solid var(--under-color);
+    border-radius: 15px;
+}
+.lic-column2:after {
       content: "";
       display: table;
       clear: both;
@@ -144,16 +174,16 @@ background-color: #86af08;
     font-family: var(--font-type);
 }
 .but-list {
-    margin:0 0 10px 0;
-    padding: 2em 2em 2em 5em;
+    margin:0 0 0px 0;
+    padding: 1em 1em 1em 3em;
     width: 100%;
     color: var(--lgray-color);
     overflow: hidden;
     background-color: var(--dark-color);
 }
 .lic-but-list {
-    margin:0px 10px 40px 100px;
-    padding: 2em 2em 2em 5em;
+    margin:0px 0px 40px 0px;
+    padding: 2em 2em 0em 10em;
     width: 100%;
     color: var(--lgray-color);
     overflow: hidden;
@@ -169,6 +199,7 @@ background-color: #86af08;
     background-color: var(--dark-color);
     border: 1px solid var(--under-color);
     border-radius: 15px;
+    word-wrap: break-word;
 }
 .lic-buy {
     height: 100%;
@@ -180,10 +211,10 @@ background-color: #86af08;
     border-radius: 15px;
 }
 .para{
-    color: var(--dgray-color);
+    color: var(--gray-color);
     font-size: 20px;
     text-align: center;
-    padding: 1em 1em 1em 1em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
     margin: 0px;
 }
 .fileDetails {
@@ -191,8 +222,9 @@ margin-left: 0px;
 font-size: 12px;
 font-family: 'monospace','Courier','Courier New';
 color: var(--lgray-color);
-padding: 1em;
+padding: 0.5em;
     background-color: var(--dark-color);
+    word-wrap: break-word;
     }
 
 .dropdown select {
@@ -217,6 +249,24 @@ padding: 1em;
 input[type="file"]  {
         display:none;
         }
+    
+input[type="text"]  {
+        display:none;
+        font-size:22px;
+        display:block;
+        width: 100%;
+        margin: 0;
+        padding:5px 10px;
+        background:none;
+        background-image:none;
+        border:1px solid #1a9e67;
+        color: var(--lgray-color);
+        border-radius:0;
+        transition:border-color .25s ease, box-shadow .25s ease;
+        }
+input[name="productName"]  {
+            width: 70%;
+        } 
 label   {
         height: 10%;
         }
@@ -228,7 +278,7 @@ label   {
         height: 40px;
         color: #1a9e67;
         font-family: 'Raleway','Source Sans Pro', 'Arial';
-        margin: 10px;
+        margin: 0px;
         }
 input[type="radio"] {
     -webkit-appearance:none;
@@ -291,15 +341,6 @@ input[type="radio"] {
         font-size: 30px;
         font-family: 'Raleway','Source Sans Pro', 'Arial';
         }
-        input[type=text], input[type=password] {
-            width: 25%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        text-align: center;
-            }
 .verify-body{
     min-height: 100%;
     background-color: var(--dark-color);
@@ -334,8 +375,40 @@ input[type="radio"] {
     font-size: 20px;
 }
 .verify-para{
-    color: var(--dgray-color);
+    color: var(--lgray-color);
     font-size: 30px;
     text-align: center;
     margin: 0px;
+}
+.stat-para{
+    color: var(--lgray-color);
+    font-size: 15px;
+    text-align: center;
+}
+.top-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .top-row > div {
+    float: left;
+    width:46%;
+    padding: 10px 0px 10px 0px;
+  }
+  .top-row:last-child { 
+      margin:0;
+}
+.field-wrap {
+    color: var(--text-color);
+  position:relative;
+  margin-right: 4px;
+  border: 5px solid var(--dark-color);
+    border-radius: 15px;
+}
+input::placeholder{
+    font-size: 20px;
+}
+span {
+    font-size: 20px;
 }

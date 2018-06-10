@@ -23,7 +23,7 @@
                     <div class="lic-column">
                         <div class = "lic-buy">
                                 <p class="para" >Purchase ERC721 Token License</p>
-                            <div class ="lic-but-list">
+                                <div class ="lic-but-list">
                                 
                                 <div class="dropdown">
                                     <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
@@ -39,16 +39,14 @@
                                         <option value="software2">software2</option>
                                     </select><br><br>
                                 </div><br>
-                                <form class="license-options" action="">
+                                <form class="license-options" id="licOptions" action=""><!--
                                     <input type="radio" name="time" id="o1" value="6months"> 6 months,   1.2 Ether<br>
                                     <input type="radio" name="time" id="o2" value="12months"> 1 year,   2.2 Ether<br>
                                     <input type="radio" name="time" id="o3" value="24months"> 2 years,   4 Ether<br>
-                                </form>
+                                -->    </form>
                                 <button onclick="purchaseLicense()" id="validateBTN">Buy License</button>
                                 <div class = "licensePurchaseDetails">
                             </div>
-                            
-                            
                                 <div class = "tokenDetails">
                                     <p id="fileDetailsText"></p>
                                     <p id="fileName"></p>
@@ -56,12 +54,15 @@
                                     <p id="company"></p>
                                     <p id="timeStamp"></p>
                                 </div>
-                        
+                            </div>    
+                            <div class="trial-lic" action="">
+                                    <input type="button" onclick="createRadioButton()" value="CreateRadioButton">
+                                    <div id="fooBar"></div>
+                            </div>
                             
                         </div>
                     </div>
-                    </div>
-                    <div class="lic-column">
+                    <div class="lic-column2">
                         <h2>Licenses Owned</h2>
                     </div>
                     </div> 

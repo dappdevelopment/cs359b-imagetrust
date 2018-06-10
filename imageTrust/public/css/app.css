@@ -34,19 +34,6 @@ header	{
     text-align: left;
     font-size: 30px
 }
-footer  {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 0.5em;
-    color: #606060;
-    background-color: #e0e0e0;
-    clear: left;
-    text-align: center;
-    font-family: var(--font-type);
-} 
 .main-content   {
     padding: 10px 10px 10px 10px;
 }
@@ -108,6 +95,7 @@ li a {
     cursor:pointer;
     transition:.5s ease;
     border-radius: 20px;
+    word-wrap: break-word;
 }
 li a:hover {
       background: var(--text-color);
@@ -117,6 +105,9 @@ li a:hover {
 .active a {
     background:var(--dark-color);
     color:white;
+}
+.row{
+    height: 100%;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -152,6 +143,7 @@ h2{
     letter-spacing:.1em;
     background:var(--text-color);
     color:white;
+    word-wrap: break-word;
     transition:all.5s ease;
     -webkit-appearance: none;
 }
