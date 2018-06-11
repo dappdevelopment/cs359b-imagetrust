@@ -30,7 +30,7 @@ async function userLogin() {
     body: JSON.stringify(lgDB),
   }).then(function(res) {
      console.log(res.status);
-    if (true) { //(res.status == 200) {
+    if (res.status == 200) {
       console.log("signedin");
       window.location.href="/imagetrust/publish.html";
     }

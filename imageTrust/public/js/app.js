@@ -1,5 +1,62 @@
+async function init(contractName) {
+    console.log("Using web3 version: " + Web3.version);
+    if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
+    web3 = new Web3(web3.currentProvider); // MetaMask injected Ethereum provider
+
+    // Get the account of the user from metamask
+    const userAccounts = await web3.eth.getAccounts(); // resolves on an array of accounts
+    userAccount = userAccounts[0];
+    console.log("User account:", userAccount);
+
+    // get javascript object representation of our solidity contract
+    console.log(contractName);
+    const contractData = await $.getJSON(contractName); //contractName);
+    console.log("got data");
+    const networkId = await web3.eth.net.getId(); // resolves on the current network id
+    console.log(networkId);
+    let contractAddress;
+    try {
+        contractAddress = contractData.networks[networkId].address;
+    } catch (e) {
+        alert("Contract not found on selected Ethereum network on MetaMask.");
+    }
+    console.log("contAdd");
+    contract = new web3.eth.Contract(contractData.abi, contractAddress);
+    console.log("Contract Address:", contract);
+
+    // Register contract's event handlers
+    //contractEvents(contractData.abi, networkId);
+
+    return {
+        web3_ : web3,
+        userAccount_ : userAccount,
+        contract_ : contract
+    };
+}
+
+
+
 function app()	{
   if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
+
+  // Variables
+  var allFileNames = [];
+  var allFileHashes = [];
+  var allFileDates = [];
+  var Nfiles = 0;
+  var companyName = null;
+  var firstName = null;
+  var lastName = null;
+
+  console.log("here"); 
+  initVals = await init("contractJSON/licenseToken.json");
+  console.log("here"); 
+
+  web3 = initVals.web3_; // Ethereum provider injected by MetaMask
+  var userAccount = initVals.userAccount_;
+  var contract = initVals.contract_;
+
+  /*
   web3 = new Web3(web3.currentProvider); // MetaMask injected Ethereum provider
   console.log("Using web3 version: " + Web3.version);     //Checking Web3 package
   console.log(CryptoJS.SHA256("Message"));      //Checking CryptoJS package
@@ -10,10 +67,55 @@ function app()	{
   var allFileDates = [];
   var Nfiles = 0;
   var companyName = null;
-  $("#companyName").change(function() {
-    var sel = document.getElementById("companyName");
-    companyName = sel.options[sel.selectedIndex].value;
+  
+  var contract;
+  var userAccount;
+  var contractDataPromise = $.getJSON('contractJSON/codeVerification.json');
+  var networkIdPromise = web3.eth.net.getId(); // resolves on the current network id
+  var accountsPromise = web3.eth.getAccounts(); // resolves on an array of accounts
+      
+  Promise.all([contractDataPromise, networkIdPromise, accountsPromise])
+    .then(function initApp(results) {
+      var contractData = results[0];  // resolved value of contractDataPromise
+      var networkId = results[1];     // resolved value of networkIdPromise
+      var accounts = results[2];      // resolved value of accountsPromise
+      userAccount = accounts[0];
+
+      // (todo) Make sure the contract is deployed on the network to which our provider is connected
+      
+      var contractAddress = contractData.networks[networkId].address;
+      contract = new web3.eth.Contract(contractData.abi, contractAddress);
+    })
+    .then(function () {
+    console.log(userAccount);
+    console.log(contract);
+    });
+*/
+ 
+
+  ///  Get company name  ///
+  console.log("key", userAccount);
+  let cmpInfo = {
+    key : userAccount
+  }
+  fetch('imagetrust/api/getUserInfo', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(cmpInfo),
+  })
+  .then(function(res) {
+    return res.json();
+  })
+  .then(function(jres) {
+    firstName = jres.FirstName;
+    lastName = jres.LastName;
+    companyName = jres.Company;
+    console.log(firstName, lastName, companyName);
   });
+
+
 
         /*----------Upload Files, Calculate Hash, Timestamp and Display in HTML--------*/
   $("#publishFile-dialog").change(function() {
@@ -75,29 +177,7 @@ function app()	{
     Nfiles = files.length;
   }
 
-  var contract;
-  var userAccount;
-  var contractDataPromise = $.getJSON('contractJSON/codeVerification.json');
-  var networkIdPromise = web3.eth.net.getId(); // resolves on the current network id
-  var accountsPromise = web3.eth.getAccounts(); // resolves on an array of accounts
-      
-  Promise.all([contractDataPromise, networkIdPromise, accountsPromise])
-    .then(function initApp(results) {
-      var contractData = results[0];  // resolved value of contractDataPromise
-      var networkId = results[1];     // resolved value of networkIdPromise
-      var accounts = results[2];      // resolved value of accountsPromise
-      userAccount = accounts[0];
-
-      // (todo) Make sure the contract is deployed on the network to which our provider is connected
-      
-      var contractAddress = contractData.networks[networkId].address;
-      contract = new web3.eth.Contract(contractData.abi, contractAddress);
-    })
-    .then(function () {
-    console.log(userAccount);
-    console.log(contract);
-    });
-    
+   
     function infoToBlockchain(companyName, fileName, fileHash) {
       console.log("Adding hash", fileName, fileHash, companyName);
       contract.methods.addSoftInfo(companyName, fileName, fileHash).send({from: userAccount})
