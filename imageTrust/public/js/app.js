@@ -176,5 +176,20 @@ function app()	{
       $('.tab-content > div').not(target).hide();
       $(target).fadeIn(600);
     });  
+
+$('.optionsForm').on('submit', function (e) {
+    e.preventDefault();
+    var obj = {};
+    var licenseOptions = $(this).serializeArray();
+    for (var a = 0; a < licenseOptions.length; a++) obj[licenseOptions[a].name] = licenseOptions[a].value;
+    var licenseJSON = JSON.stringify(obj);
+    console.log(JSON.stringify(obj));
+});
+    
+  //  console.log($(this).serializeArray());
+    
+    
+    
+
   }  
 $(document).ready(app);  
