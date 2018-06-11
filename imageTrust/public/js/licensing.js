@@ -146,16 +146,27 @@ function createRadioButton()
             }
 
 */
+
+$('#EntityName').on('change', function() {
+  if ($(this).val() == 'company1') {
+      $('#imghide').removeClass('hide');
+  } else {
+      $('#imghide').addClass('hide');
+  }
+});
+
+
+
 $(document).ready(function(){
 $("#productName").change(function() {
-  document.getElementById("fooBar").innerHTML = "Yayy";
-
- // var sel = document.getElementById("productName");
- // var productName = sel.options[sel.selectedIndex].value; //document.getElementById("firstName").value;
-  createRadioButton();
+  var val = this.value;
+  console.log(val);
+  document.getElementById("licOptions").innerHTML = "";
+  createRadioButton(val);
   });
 
-function createRadioButton(){
+function createRadioButton(selection){
+
             var questions =  [ 	
               {questionId:"question1", formName:"form1",radioName:"gender",values:[  "6 months,  1.2 ether", "12 months,  1.8 ether" , "24 months,  3 ether"]},
               
