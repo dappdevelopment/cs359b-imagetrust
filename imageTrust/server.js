@@ -94,6 +94,31 @@ async function test(link) {
   return cert;
 }
 
+
+app.post('/imagetrust/api/checkKey', function(req, res) {
+
+  var sql = "SELECT UserName FROM userInfo WHERE PublicKey = ?";
+  var value = [req.body.key];
+  var query = mysql.format(sql, value);
+
+  sqlConn.query(query, function (err, rows, fields) {
+    if (err) {
+      res.status(400).send({
+        message: 'public Key is not found.'
+      });
+    }
+    if (rows.length == 0) {
+      res.status(200).send();
+    }
+    else {
+      res.status(401).send();
+    } 
+    return;
+  });
+});
+
+
+
 app.post('/imagetrust/api/newUser', function(req, res) {
 
   var options = {
@@ -135,13 +160,70 @@ app.post('/imagetrust/api/newUser', function(req, res) {
       	    message: 'activity log failed, Error: ' + err });
         }
         console.log("Inserted at " + result.insertId);
-        res.status(200).send({
-      	    message: 'User added'});
+        res.status(200).send({ company : rq.subject.O });
       });
     });
   });
 
   certOut.end();
+});
+
+
+app.post('/imagetrust/api/getUserInfo', function(req, res) {
+
+  var sql = "SELECT FirstName, LastName, Company FROM userInfo WHERE PublicKey = ?";
+  var value = [req.body.key];
+  var query = mysql.format(sql, value);
+
+  sqlConn.query(query, function (err, rows, fields) {
+    if (err) {
+      res.status(400).send({
+        message: 'public Key is not found.'
+      });
+    }
+    if (rows.length == 0) {
+      console.log("no match");
+      res.status(401).send();
+    }
+    
+    console.log("got rows");
+    rows.map((row) => {
+      console.log(row);
+      res.status(200).send( {
+          firstName : row.FirstName,
+          lastName  : row.LastName,
+          company   : row.Company
+      });
+      return;
+    });
+  });
+});
+
+
+app.post('/imagetrust/api/getCompanies', function(req, res) {
+
+  var sql = "SELECT price FROM testlicenses WHERE name = ?";
+  console.log(req.body.license);
+  var value = [req.body.license];
+  var query = mysql.format(sql, value);
+
+  sqlConn.query(query, function (err, rows, fields) {
+    if (err) {
+      res.status(400).send({
+        message: 'License is not found.'
+      });
+    }
+    if (rows.length == 0) {
+      console.log("License not found.");
+      res.status(401).send();
+    }
+    
+    console.log("got rows");
+    rows.map((row) => {
+      console.log(row);
+      res.status(200).send({ price : row.price});
+    });
+  });
 });
 
 
