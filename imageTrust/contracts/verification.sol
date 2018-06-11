@@ -18,8 +18,8 @@ contract codeValidation is Ownable{
 
   // Currently made public for demonstration purposes
   //function addAddress(bytes32 _companyName, address _pubKey) onlyOwner {
-  function addAddress(bytes32 _companyName, address _pubKey) public {
-    companyAffiliations[_pubKey] = _companyName;
+  function addAddress(bytes32 _companyName) public {
+    companyAffiliations[msg.sender] = _companyName;
   }
 
   ////////////////////////////////////////////////////////////////////////
