@@ -185,11 +185,5 @@ $('.optionsForm').on('submit', function (e) {
     var licenseJSON = JSON.stringify(obj);
     console.log(JSON.stringify(obj));
 });
-    
-  //  console.log($(this).serializeArray());
-    
-    
-    
-
-  }  
+}  
 $(document).ready(app);  
