@@ -18,21 +18,14 @@ function init() {
     companies = jres.companies;
 
 
-  //$(document).ready(function() {
-  var counter = 0;
-  console.log(companies);
-  $('.dropdown').on('click', function (e){
-console.log(companies);
-
-      e.preventDefault();
-      if(counter<=0){
-	$.each(companies, function(val, text) {
-	  $('#companyName').append( $('<option></option>').val(val).html(text) );
-	  counter++;
-	}); 
-      }
-    //});
-  });
+    //$(document).ready(function() {
+    var counter = 0;
+    if(counter<=0){
+      $.each(companies, function(val, text) {
+        $('#companyName').append( $('<option></option>').val(val).html(text) );
+        counter++;
+      }); 
+    }
 
   });
 
