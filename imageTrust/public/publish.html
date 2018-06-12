@@ -8,11 +8,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
         <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
-        <script src="js/app.js"></script>
+        <script src="js/pubTest.js"></script>
         <link rel="stylesheet" type="text/css" href="css/publish.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>    
+    <body onload="init()">    
+
+
         <header>
             <a href="index.html" id="imageTrust">imageTrust</a>
             <p id="user"></p>
@@ -33,7 +35,7 @@
                                     <p id="company"></p>
                                     <p id="timeStamp"></p>
                                 </div>
-                                <button onclick="app()" id="validateBTN">Validate and Push</button>
+                                <button id="validateBTN">Validate and Push</button>
                             </div>
                             <p class="para">Verify Published Code</p>
                                 
@@ -44,7 +46,7 @@
                                     <p id="vfileName"></p>
                                     <p id="vhashValue"></p>
                                 </div>
-                                <button onclick="app()" id="verifyBTN">Verify File</button>
+                                <button id="verifyBTN">Verify File</button>
                                 <div id="verificationResult"></div>
                             </div>   
                         </div>
@@ -60,34 +62,34 @@
                                         <div class="top-row">
                                             <div class="field-wrap">
                                                 <label><span class="req">Duration </span></label>
-                                                <input type="text" id="duration" name="Duration-Option1" required autocomplete="off" required placeholder = "Option 1*"/>
+                                                <input type="text" id="duration" name="DurationOption1" required autocomplete="off" required placeholder = "Option 1*"/>
                                             </div>
                                             <div class="field-wrap">
                                                 <label><span class="req">Price </span></label>
-                                                <input type="text" id="price" name="Price-Option1" required autocomplete="off" required placeholder = "Option 1*"/>
+                                                <input type="text" id="price" name="PriceOption1" required autocomplete="off" required placeholder = "Option 1*"/>
                                             </div>
                                         </div>
                                         <div class="top-row">
                                             <div class="field-wrap">
                                                 <label><span class="req"></span></label>
-                                                <input type="text" id="firstName" name="Duration-Option2" autocomplete="off" placeholder = "Option 2"/>
+                                                <input type="text" id="firstName" name="DurationOption2" autocomplete="off" placeholder = "Option 2"/>
                                             </div>
                                             <div class="field-wrap">
                                                 <label><span class="req"></span></label>
-                                                <input type="text" id="lastName" name="Price-Option2" autocomplete="off" placeholder = "Option 2"/>
+                                                <input type="text" id="lastName" name="PriceOption2" autocomplete="off" placeholder = "Option 2"/>
                                             </div>
                                         </div>
                                         <div class="top-row">
                                             <div class="field-wrap">
                                                 <label><span class="req"></span></label>
-                                                <input type="text" id="firstName" name="Duration-Option3" autocomplete="off" placeholder = "Option 3"/>
+                                                <input type="text" id="firstName" name="DurationOption3" autocomplete="off" placeholder = "Option 3"/>
                                             </div>
                                             <div class="field-wrap">
                                                 <label><span class="req"></span></label>
-                                                <input type="text" id="lastName" name="Price-Option3" autocomplete="off" placeholder = "Option 3"/>
+                                                <input type="text" id="lastName" name="PriceOption3" autocomplete="off" placeholder = "Option 3"/>
                                             </div>
                                         </div>
-                                        <button onclick="app()" class="optionsSubmit" id="validateBTN">Publish Options</button>
+                                        <button class="optionsSubmit" id="validateBTN">Publish Options</button>
                                     </div>
                             </form>
                                 <div class = "licensePurchaseDetails">
