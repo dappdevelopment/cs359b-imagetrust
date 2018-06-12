@@ -1,4 +1,3 @@
-
 async function init(contractName) {
     console.log("Using web3 version: " + Web3.version);
     if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
@@ -128,24 +127,7 @@ console.log("Is it here");
       console.log(uri);
     });
 }
-/*
-function createRadioButton()
-            {
-              // var newRadioButton
-               //  = document.createElement(input(type='radio',name='radio',value='1st'));
-                var options = ["1", "2", "3", "4"];
-               //  for(i = 0, i<options.length, i++){
-                 var element = document.createElement("input");
-                 element.setAttribute("type", 'radio');
-                 element.setAttribute("name", "23");
-               //  }
-                 var foo = document.getElementById("fooBar");
-                 foo.appendChild(element);
-                 
-               //document.body.insertBefore(newRadioButton);
-            }
 
-*/
 
 $('#EntityName').on('change', function() {
   if ($(this).val() == 'company1') {
@@ -214,8 +196,34 @@ function createRadioButton(selection){
                  //-- we get the correct Hype element to append to.
                question = document.getElementById("licOptions");
                question.appendChild(theForm);
-                
-              
               }
             }
-          });
+        var companies = ["Google", "Apple", "Amazon", "Facebook", "Microsoft"];
+
+
+        var companycounter = 0;
+        $('#companydropdown').on('click', function (e){
+          e.preventDefault();
+          if(companycounter<=0){
+        $.each(companies, function(val, text) {
+          $('#liccompanyName').append( $('<option></option>').val(val).html(text) );
+          companycounter++;  
+        }); }
+        });
+
+      
+        var products = ["Chrome", "Google Drive", "Google Maps", "Calendar", "Project Shield"];
+        var productcounter = 0;
+
+   $('#liccompanyName').change(function (e){
+    e.preventDefault();  
+      if($('#liccompanyName option:selected').val() == 0){    
+          if(productcounter<=0){
+        $.each(products, function(val, text) {
+          $('#licproductName').append( $('<option></option>').val(val).html(text) );
+          productcounter++;  
+        }); 
+      }
+    } 
+  }); 
+});
