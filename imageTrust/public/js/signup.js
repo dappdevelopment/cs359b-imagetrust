@@ -156,7 +156,8 @@ async function addNewUser() {
     }
     else {
       console.log("key exists");
-      //window.location
+      window.location.href="../signupLogin.html";
+      document.getElementById("error-msg").innerHTML = "Account with this Public Key already exists, Please Login";
       return;
     }
   });
