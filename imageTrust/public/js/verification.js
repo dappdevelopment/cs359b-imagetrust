@@ -1,4 +1,6 @@
-  var options = ["one", "two", "three", "four", "five"];
+function init() {
+
+var options = ["one", "two", "three", "four", "five"];
 
   var counter = 0;
   $('.dropdown').on('click', function (e){
@@ -10,4 +12,5 @@
       }); 
     }
   });
+}
 
