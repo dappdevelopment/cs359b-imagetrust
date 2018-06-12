@@ -26,7 +26,7 @@
                         <div class = "softwareValidation">
                             <p class="para" >Publish Code on the Blockchain</p>
                             <div class ="but-list">
-                                <div class = "productEntry"><input type = "text" name = "productName" class="productName" placeholder="Product Name"><br></div>
+                                <div class = "productEntry"><input type = "text" name = "productName" class="productName" autocomplete="off" placeholder="Product Name"><br></div>
                                 <div class= "file-upload"><input type="file" id="publishFile-dialog"><label for="publishFile-dialog">Choose a File</label></div>
                                 <div class = "fileDetails">
                                     <p id="fileDetailsText"></p>
@@ -57,15 +57,15 @@
                             <p class="para">Licensing Options Creation</p>
                             <form class="optionsForm">
                                 <div class = "but-list">
-                                    <div class = "productEntry"><input type = "text" name = "productName" class="productName" placeholder="Product Name"><br></div>
+                                    <div class = "productEntry"><input type = "text" name = "productName" class="productName" autocomplete="off" placeholder="Product Name"><br></div>
                                     <p>Pricing Options</p><br>
                                         <div class="top-row">
                                             <div class="field-wrap">
-                                                <label><span class="req">Duration </span></label>
+                                                <label><span class="req">Duration (months)</span></label>
                                                 <input type="text" id="duration" name="DurationOption1" required autocomplete="off" required placeholder = "Option 1*"/>
                                             </div>
                                             <div class="field-wrap">
-                                                <label><span class="req">Price </span></label>
+                                                <label><span class="req">Price (ether)</span></label>
                                                 <input type="text" id="price" name="PriceOption1" required autocomplete="off" required placeholder = "Option 1*"/>
                                             </div>
                                         </div>

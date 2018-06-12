@@ -1,43 +1,38 @@
-  
 <html>
-        <head>
-          <title>ImageTrust</title>
-          <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-          <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
-          <script src="js/verification.js"></script>
-          <link rel="stylesheet" type="text/css" href="css/publish.css">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
-        <body onload="init()" class="verify-body">    
-            <header class="verify-header">
-                <a href="index.html" id="imageTrust">imageTrust</a>
-                <p id="user">Hello!</p>
-            </header>
-                            <div class = "verify-tab">
-                                
-                                    
-                                    <p class="verify-para">Verify Published Code</p>
-                                    <p class="para">Upload a software package/code to verify software integrity and its published credentials</p>
-                                    <div class= "verify-page">
-                                            <div class="dropdown">
-                                                    <select name="EntityName" id="companyName"><label for="EntityName">Choose Company Name</label>
-                                                       <option id="optionsList">Choose Company</option>
-                                                    </select><br><br>
-                                                </div><br>
-                                    <div class= "file-upload-verifypg"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div><br><br>
-                                    <div class = "fileDetails">
-                                            <p id="fileName"></p>
-                                            <p id="hashValue"></p>
-                                            <p id="company"></p>
-                                        </div>
-                                    <button onclick="app()" id="verifyBTN">Verify File</button><br><br><br>
-                                    <div id="verificationResult"></div><br><br>
-                                
-                            
-                                </div>
-            </div>
-        </body>
-      </html>
+    <head>
+        <title>ImageTrust</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://dapps.stanford.edu/web3/web3-1.0.0-beta.34.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+        <script src="js/verification.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/publish.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="init()" class="verify-body">    
+        <header class="verify-header">
+            <a href="index.html" id="imageTrust">imageTrust</a>
+            <p id="user">Hello!</p>
+        </header>
+        <div class = "verify-tab">                            
+            <p class="verify-para">Verify Published Code</p>
+            <p class="para">Upload a software package/code to verify software integrity and its published credentials</p>
+                <div class= "verify-page">
+                    <div class="dropdown">
+                        <select name="EntityName" id="companyName"><label for="EntityName">Choose Company Name</label>
+                            <option id="optionsList">Choose Company</option>
+                        </select><br><br>
+                    </div><br>
+                    <div class= "file-upload-verifypg"><input type="file" id="file-dialog"><label for="file-dialog">Choose a File</label></div><br><br>
+                    <div class = "fileDetails">
+                        <p id="fileName"></p>
+                        <p id="hashValue"></p>
+                        <p id="company"></p>
+                    </div>
+                    <button onclick="app()" id="verifyBTN">Verify File</button><br><br><br>
+                    <div id="verificationResult"></div><br><br>
+                </div>
+        </div>
+    </body>
+</html>

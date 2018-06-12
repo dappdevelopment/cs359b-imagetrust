@@ -183,9 +183,10 @@ background-color: #86af08;
 }
 .lic-but-list {
     margin:0px 0px 40px 0px;
-    padding: 2em 2em 0em 10em;
+    padding: 2em 2em 2em 2em;
     width: 100%;
     color: var(--lgray-color);
+    text-align: center;
     overflow: hidden;
     background-color: var(--dark-color);
 }
@@ -204,6 +205,7 @@ background-color: #86af08;
 .lic-buy {
     height: 100%;
     width: 100%;
+    padding: 1em 0em 0em 0em;
     color: var(--lgray-color);
     overflow: hidden;
     background-color: var(--dark-color);
@@ -212,7 +214,7 @@ background-color: #86af08;
 }
 .para{
     color: var(--gray-color);
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
     padding: 0.5em 0.5em 0.5em 0.5em;
     margin: 0px;
