@@ -25,25 +25,18 @@
                                 <p class="para" >Purchase ERC721 Token License</p>
                                 <div class ="lic-but-list">
                                 
-                                <div class="dropdown">
-                                    <select name="EntityName" id="companyName"><label for="EntityName">Entity Name</label>
-                                        <option value="companyName">Entity Name</option>
-                                        <option value="company1">Company 1</option>
-                                        <option value="company2">Company 2</option>
+                                <div class="dropdown" id="companydropdown">
+                                    <select name="EntityName" id="liccompanyName"><label for="EntityName">Entity Name</label>
+                                        <option>Choose Company</option>
                                     </select><br><br>
                                 </div><br>
-                                <div class="dropdown">
-                                    <select name="productName" id="productName"><label for="productName">Product/Device Name</label>
-                                        <option value="productName">Product/Device</option>
-                                        <option value="software1">software1</option>
-                                        <option value="software2">software2</option>
+                                <div class="dropdown" id="productdropdown">
+                                    <select name="productName" id="licproductName"><label for="productName">Product/Device Name</label>
+                                        <option>Product/Device</option>
                                     </select><br><br>
                                 </div><br>
-                                <form class="license-options" id="licOptions" action=""><!--
-                                    <input type="radio" name="time" id="o1" value="6months"> 6 months,   1.2 Ether<br>
-                                    <input type="radio" name="time" id="o2" value="12months"> 1 year,   2.2 Ether<br>
-                                    <input type="radio" name="time" id="o3" value="24months"> 2 years,   4 Ether<br>
-                                -->    </form>
+                                <form class="license-options" id="licOptions" action="">
+                                </form>
                                 <button onclick="purchaseLicense()" id="validateBTN">Buy License</button>
                                 <div class = "licensePurchaseDetails">
                             </div>
