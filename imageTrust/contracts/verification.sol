@@ -6,9 +6,9 @@ import "./ownable.sol";
 contract codeValidation is Ownable{
   address CREATOR = address(0);
   string COMPANYNAME = "None";
-  mapping (bytes32 => mapping (bytes32 => bytes32)) codeHashes; 
+  mapping (bytes32 => mapping (bytes32 => string)) codeHashes; 
   mapping (address => bytes32) companyAffiliations;
-  event hashAdded(address _creator, bytes32 _fileName, bytes32 _codeHash);
+  event hashAdded(address _creator, bytes32 _fileName, string _codeHash);
 
   constructor(string _companyName) public {
     CREATOR = msg.sender;
@@ -29,8 +29,8 @@ contract codeValidation is Ownable{
   //    _fileName:  Name of the file                                    //
   //    _codeHash: Hash of the code being validated                     //
   ////////////////////////////////////////////////////////////////////////
-  function addSoftInfo(bytes32 _companyName, bytes32 _fileName, bytes32 _codeHash) public returns (bool success) {
-    require(_companyName == companyAffiliations[msg.sender]);
+  function addSoftInfo(bytes32 _companyName, bytes32 _fileName, string _codeHash) public returns (bool success) {
+    //require(_companyName == companyAffiliations[msg.sender]);
     codeHashes[_companyName][_fileName] = _codeHash;
     emit hashAdded(msg.sender, _fileName, codeHashes[_companyName][_fileName]);
     return true;
@@ -44,8 +44,8 @@ contract codeValidation is Ownable{
   //    _fileName:  Name of the file                                    //
   //    _codeHash: Hash of the code being validated                     //
   ////////////////////////////////////////////////////////////////////////
-  function viewSoftInfo(bytes32 _companyName, bytes32 _fileName, bytes32 _fileHash) public view returns (bool) {
-    bool hashTruth = (_fileHash == codeHashes[_companyName][_fileName]);
+  function viewSoftInfo(bytes32 _companyName, bytes32 _fileName, string _fileHash) public view returns (bool) {
+    bool hashTruth = (keccak256(_fileHash) == keccak256(codeHashes[_companyName][_fileName]));
     return hashTruth; 
   }
 }
