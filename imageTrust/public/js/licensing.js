@@ -1,4 +1,7 @@
-async function init(contractName) {
+var userAccount = null
+var contract = null
+
+async function init() {
     console.log("Using web3 version: " + Web3.version);
     if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
     web3 = new Web3(web3.currentProvider); // MetaMask injected Ethereum provider
@@ -9,8 +12,7 @@ async function init(contractName) {
     console.log("User account:", userAccount);
 
     // get javascript object representation of our solidity contract
-    console.log(contractName);
-    const contractData = await $.getJSON(contractName); //contractName);
+    const contractData = await $.getJSON("contractJSON/licenseToken.json"); //contractName);
     console.log("got data");
     const networkId = await web3.eth.net.getId(); // resolves on the current network id
     console.log(networkId);
@@ -27,50 +29,165 @@ async function init(contractName) {
     // Register contract's event handlers
     //contractEvents(contractData.abi, networkId);
 
-    return {
-	web3_ : web3,
-	userAccount_ : userAccount,
-	contract_ : contract
-    };
+    $(document).ready(function(){
+      fetch('imagetrust/api/getCompanies', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(jres) {
+        console.log(jres.companies);
+        companies = jres.companies;
+        
+        var counter = 0;
+        if(counter<=0){
+          $.each(companies, function(val, text) {
+            $('#liccompanyName').append( $('<option></option>').val(val).html(text) );
+            counter++;
+          }); 
+        }
+      });
+        
+      var cmpName = null;
+      $('#liccompanyName').change(function (e){
+        e.preventDefault();  
+        cmpName = ($('#liccompanyName option:selected').text());
+
+        let cmpInfo = {
+          company : cmpName
+        }
+        fetch('imagetrust/api/getSoftware', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(cmpInfo),
+        })
+        .then(function(res) {
+          return res.json();
+        })
+        .then(function(jres) {
+          console.log("soft");
+          console.log(jres);
+
+          var productcounter = 0;
+          if(productcounter<=0){
+            $.each(jres.software, function(val, text) {
+              console.log("soft here");
+              $('#licproductName').append( $('<option></option>').val(val).html(text) );
+              productcounter++;  
+            }); 
+          }
+        });
+      });
+
+      $("#licproductName").change(function() {
+        var pdtName = ($('#licproductName option:selected').text());
+        console.log("in opts");
+        let sftInfo = {
+          company  : cmpName,
+          software : pdtName 
+        }
+        fetch('imagetrust/api/getPrices', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(sftInfo),
+        })
+        .then(function(res) {
+          return res.json();
+        })
+        .then(function(jres) {
+          console.log("prices");
+          console.log(jres);
+
+          //var licOptions = jres.durations + 'days,' + jres.prices + ' ether';
+          console.log("opts", licOptions);
+          document.getElementById("licOptions").innerHTML = "";
+          createRadioButton(jres.durations, jres.prices);
+        });
+      });
+      $("#licOptions").change(function()  {
+    console.log($("#licOptions input[type='radio']:checked").val());
+      });
+    });
+
 }
 
-async function addNewUser() {
+function createRadioButton(duration, price) {
 
-  if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
-  web3 = new Web3(web3.currentProvider); // MetaMask injected Ethereum provider
+    console.log(duration);
+    console.log(price);
+    var licOptions = [];
+    var i=0;
+    for (i=0; i<duration.length; i++) {
+      licOptions.push(duration[i] + " Days, " + price[i] + " Ether");
+    }
 
-  // Get the account of the user from metamask
-  const userAccounts = await web3.eth.getAccounts(); // resolves on an array of accounts
-  userAccount = userAccounts[0];   
- 
-  var inpFirstName  = document.getElementById("firstName").value;
-  var inpLastName   = document.getElementById("lastName").value;
-  var inpCompanyURL = document.getElementById("companyUrl").value;
-  var inpEmail      = document.getElementById("emailAdd").value;
-  var inpUserName   = document.getElementById("userName").value;
-  var inpPassWord   = document.getElementById("password").value;
-
-  let certInfo = {
-    userName  : inpUserName,
-    firstName : inpFirstName,
-    lastName  : inpLastName,
-    passHash  : inpPassWord,
-    keyLink   : inpCompanyURL,
-    key       : userAccount
+    //   var questions =  [ 	
+    //
+  
+  //////////var licOptions = ["6months", "12monhs", "18months"];
+  
+  
+  //-- we iterate over each question
+  /*
+  for (i = 0; i < questions.length; i++) { 
+     var question;
+     var theInput;
+     
+     var thisQuestion = questions[i];
+     
+     //-- we get the values arrary for the question
+     var theValues =   thisQuestion.values;
+     
+     
+     //-- we set the forms name
+     ///////    theForm.setAttribute('name',thisQuestion.formName);
+    */
+    //-- we iterate over each value and create a input for it and we add the value
+    var theInput;
+    //-- we creat a label element for the text label.
+    var label = document.createElement( 'label');
+    //-- we create the form element 
+    var theForm = document.createElement("form");
+    for (i = 0; i < licOptions.length; i++) { 
+      
+      theInput = document.createElement("input");
+    
+      theInput.setAttribute('type',"radio");
+      
+    ///////////  theInput.setAttribute('name',thisQuestion.radioName);
+      theInput.setAttribute('value',licOptions[i]);
+     
+      
+      //-- we add the input to its text label.  ( put it insdie of it )
+      label.appendChild(theInput);
+      label.innerHTML += "<span> " + licOptions[i] + "</span><br>";
+      //--we add the label to the form.
+      theForm.appendChild( label);
+    }
+   
+     //-- we get the correct Hype element to append to.
+   licenseOptions = document.getElementById("licOptions");
+   licenseOptions.appendChild(theForm);
   }
-  fetch('/imagetrust/api/newUser', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(certInfo),
-  })
-  .then(function(res) {
-    setTimeout(function() {
-      window.location.href="/imagetrust/validation.html";
-    }, 1000);
-  });
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 async function purchaseLicense() {
@@ -139,65 +256,22 @@ $('#EntityName').on('change', function() {
 
 
 
-$(document).ready(function(){
-$("#productName").change(function() {
-  var val = this.value;
-  console.log(val);
-  document.getElementById("licOptions").innerHTML = "";
-  createRadioButton(val);
-  });
 
-function createRadioButton(selection){
 
-            var questions =  [ 	
-              {questionId:"question1", formName:"form1",radioName:"gender",values:[  "6 months,  1.2 ether", "12 months,  1.8 ether" , "24 months,  3 ether"]},
-              
-                    ];
-              
-              
-              
-              //-- we iterate over each question
-              
-              for (i = 0; i < questions.length; i++) { 
-                 var question;
-                 var theInput;
-                 
-                 var thisQuestion = questions[i];
-                 
-                 //-- we get the values arrary for the question
-                 var theValues =   thisQuestion.values;
-                 
-                 //-- we creat a label element for the text label.
-                 var label = document.createElement( 'label');
-                 
-                 //-- we create the form element 
-                 var theForm = document.createElement("form");
-                 //-- we set the forms name
-                 theForm.setAttribute('name',thisQuestion.formName);
-               
-                //-- we iterate over each value and create a input for it and we add the value
-                for (q = 0; q < theValues.length; q++) { 
-                
-                theInput = document.createElement("input");
-              
-                theInput.setAttribute('type',"radio");
-                
-                theInput.setAttribute('name',thisQuestion.radioName);
-                theInput.setAttribute('value',theValues[q]);
-               
-                
-                //-- we add the input to its text label.  ( put it insdie of it )
-                label.appendChild(theInput);
-                label.innerHTML += "<span> " + theValues[q] + "</span><br>";
-                //--we add the label to the form.
-                theForm.appendChild( label);
-                }
-               
-                 //-- we get the correct Hype element to append to.
-               question = document.getElementById("licOptions");
-               question.appendChild(theForm);
-              }
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         var companies = ["Google", "Apple", "Amazon", "Facebook", "Microsoft"];
 
 
@@ -226,4 +300,3 @@ function createRadioButton(selection){
       }
     } 
   }); 
-});

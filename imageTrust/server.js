@@ -186,11 +186,6 @@ app.post('/imagetrust/api/getUserInfo', function(req, res) {
       res.status(401).send();
     }
     
-    console.log("got rows");
-    console.log(rows);
-    console.log(rows[0]);
-    console.log(rows[0].Company);
-    console.log(rows[0].FirstName, rows[0].LastName, rows[0].Company);
     res.status(200).send( {
         firstName : rows[0].FirstName,
         lastName  : rows[0].LastName,
@@ -204,8 +199,6 @@ app.post('/imagetrust/api/getUserInfo', function(req, res) {
 app.post('/imagetrust/api/addLicense', function(req, res) {
 
   var sql = "INSERT INTO licenses (company, software, duration, price) VALUES (?, ?, ?, ?)";
-  var durOpt = ["Duration-Option1","Duration-Option2","Duration-Option3"]
-  var prcOpt = ["Price-Option1","Price-Option2","Price-Option3"]
   var values = [];
 
   if (req.body.DurationOption1 != "") {
@@ -249,10 +242,8 @@ app.post('/imagetrust/api/addLicense', function(req, res) {
 
 app.post('/imagetrust/api/getCompanies', function(req, res) {
 
-  var sql = "SELECT price FROM testlicenses WHERE name = ?";
-  console.log(req.body.license);
-  var value = [req.body.license];
-  var query = mysql.format(sql, value);
+  var sql = "SELECT company FROM userInfo";
+  var query = mysql.format(sql);
 
   sqlConn.query(query, function (err, rows, fields) {
     if (err) {
@@ -266,20 +257,53 @@ app.post('/imagetrust/api/getCompanies', function(req, res) {
     }
     
     console.log("got rows");
-    rows.map((row) => {
-      console.log(row);
-      res.status(200).send({ price : row.price});
-    });
+    console.log(rows);
+    var i=0;
+    var out = [];
+    for (i=0; i<rows.length; i++) {
+      console.log(rows[i].company);
+      out.push(rows[i].company);
+    }
+    res.status(200).send({ companies : out});
   });
 });
 
 
-app.post('/imagetrust/api/getPrice', function(req, res) {
+app.post('/imagetrust/api/getSoftware', function(req, res) {
 
-  var sql = "SELECT price FROM testlicenses WHERE name = ?";
-  console.log(req.body.license);
-  var value = [req.body.license];
-  var query = mysql.format(sql, value);
+  var sql = "SELECT software FROM licenses WHERE company = ?";
+  var values = [req.body.company];
+  var query = mysql.format(sql, values);
+
+  sqlConn.query(query, function (err, rows, fields) {
+    if (err) {
+      res.status(400).send({
+        message: 'License is not found.'
+      });
+    }
+    if (rows.length == 0) {
+      console.log("License not found.");
+      res.status(401).send();
+    }
+    
+    console.log("got Soft rows");
+    console.log(rows);
+    var i=0;
+    var out = [];
+    for (i=0; i<rows.length; i++) {
+      console.log(rows[i].software);
+      out.push(rows[i].software);
+    }
+    res.status(200).send({ software : out});
+  });
+});
+
+
+app.post('/imagetrust/api/getPrices', function(req, res) {
+
+  var sql = "SELECT duration, price FROM licenses WHERE company = ? AND software = ?";
+  var values = [req.body.company, req.body.software];
+  var query = mysql.format(sql, values);
 
   sqlConn.query(query, function (err, rows, fields) {
     if (err) {
@@ -293,13 +317,21 @@ app.post('/imagetrust/api/getPrice', function(req, res) {
     }
     
     console.log("got rows");
-    rows.map((row) => {
-      console.log(row);
-      res.status(200).send({ price : row.price});
+    console.log(rows);
+    var i=0;
+    var outDur = [];
+    var outPrc = [];
+    for (i=0; i<rows.length; i++) {
+      console.log(rows[i].duration);
+      outDur.push(rows[i].duration);
+      outPrc.push(rows[i].price);
+    }
+    res.status(200).send({ 
+          durations : outDur,
+          prices    : outPrc
     });
   });
 });
-
 
 
 app.listen(3000, function () {
