@@ -187,16 +187,63 @@ app.post('/imagetrust/api/getUserInfo', function(req, res) {
     }
     
     console.log("got rows");
-    rows.map((row) => {
-      console.log(row);
-      res.status(200).send( {
-          firstName : row.FirstName,
-          lastName  : row.LastName,
-          company   : row.Company
-      });
-      return;
+    console.log(rows);
+    console.log(rows[0]);
+    console.log(rows[0].Company);
+    console.log(rows[0].FirstName, rows[0].LastName, rows[0].Company);
+    res.status(200).send( {
+        firstName : rows[0].FirstName,
+        lastName  : rows[0].LastName,
+        company   : rows[0].Company
     });
+    return;
   });
+});
+
+
+app.post('/imagetrust/api/addLicense', function(req, res) {
+
+  var sql = "INSERT INTO licenses (company, software, duration, price) VALUES (?, ?, ?, ?)";
+  var durOpt = ["Duration-Option1","Duration-Option2","Duration-Option3"]
+  var prcOpt = ["Price-Option1","Price-Option2","Price-Option3"]
+  var values = [];
+
+  if (req.body.DurationOption1 != "") {
+    values = [req.body.company, req.body.productName,
+              req.body.DurationOption1, req.body.PriceOption1];
+
+    var sqlRes = sqlConn.query(sql, values, function (err, result) {
+      if (err) {
+        console.log("error");
+        res.status(400).send({ 
+    	    message: 'activity log failed, Error: ' + err });
+      }
+    });
+  }
+  if (req.body.DurationOption2 != "") {
+    values = [req.body.company, req.body.productName,
+              req.body.DurationOption2, req.body.PriceOption2];
+
+    var sqlRes = sqlConn.query(sql, values, function (err, result) {
+      if (err) {
+        console.log("error");
+        res.status(400).send({ 
+    	    message: 'activity log failed, Error: ' + err });
+      }
+    });
+  }
+  if (req.body.DurationOption3 != "") {
+    values = [req.body.company, req.body.productName,
+              req.body.DurationOption3, req.body.PriceOption3];
+
+    var sqlRes = sqlConn.query(sql, values, function (err, result) {
+      if (err) {
+        console.log("error");
+        res.status(400).send({ 
+    	    message: 'activity log failed, Error: ' + err });
+      }
+    });
+  }
 });
 
 
