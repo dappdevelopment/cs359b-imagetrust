@@ -391,10 +391,10 @@ input[type="radio"] {
     text-align: center;
     margin: 0px;
 }
-.stat-para{
+.sub-para{
     color: var(--lgray-color);
-    font-size: 15px;
-    text-align: center;
+    font-size: 18px;
+    margin: 10px 0px 10px 0px;
 }
 .top-row:after {
     content: "";
@@ -423,3 +423,4 @@ input::placeholder{
 span {
     font-size: 20px;
 }
+
