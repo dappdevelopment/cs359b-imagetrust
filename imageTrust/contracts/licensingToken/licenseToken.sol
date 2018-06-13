@@ -225,12 +225,18 @@ contract licenseToken is Ownable, ERC721, ERC721BasicToken {
     return;
   }
 
-  function getLicenses() public view returns(bytes32[]) {
-    bytes32[] memory licenses = new bytes32[](ownedTokens[msg.sender].length);
+  function getLicenses() public view returns(bytes32[], bytes32[], uint256[], uint256[]) {
+    bytes32[] memory licenses  = new bytes32[](ownedTokens[msg.sender].length);
+    bytes32[] memory companies = new bytes32[](ownedTokens[msg.sender].length);
+    uint256[] memory endDates  = new uint256[](ownedTokens[msg.sender].length);
+    uint256[] memory tokenId   = new uint256[](ownedTokens[msg.sender].length);
     for (uint i=0; i<ownedTokens[msg.sender].length; i++) {
-      licenses[i] = tokenURIs[ownedTokens[msg.sender][i]].software;
+      licenses[i]  = tokenURIs[ownedTokens[msg.sender][i]].software;
+      companies[i] = tokenURIs[ownedTokens[msg.sender][i]].company;
+      endDates[i]  = tokenURIs[ownedTokens[msg.sender][i]].endDate;
+      tokenId[i]   = ownedTokens[msg.sender][i];
     }
-    return licenses;
+    return (licenses, companies, endDates, tokenId);
   }
 
   /**
