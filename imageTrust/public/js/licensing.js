@@ -73,10 +73,19 @@ async function init() {
         .then(function(jres) {
           console.log("soft");
           console.log(jres);
+          console.log(jres.software);
+
+
+var uniqueSoftwares = [];       /////////////////////////////////////////////////
+$.each(jres.software, function(i, el){    ////////////////////////////////////////////////
+    if($.inArray(el, uniqueSoftwares) === -1) uniqueSoftwares.push(el);    ////////////////////////////////////
+});     //////////////////////////////////
+console.log(uniqueSoftwares);    //////////////////////////////////////////
+
 
           var productcounter = 0;
           if(productcounter<=0){
-            $.each(jres.software, function(val, text) {
+            $.each(uniqueSoftwares, function(val, text) {    /////////////////////////////////////////
               console.log("soft here");
               $('#licproductName').append( $('<option></option>').val(val).html(text) );
               productcounter++;  
@@ -114,11 +123,11 @@ async function init() {
       });
       $("#licOptions").change(function()  {
     console.log($("#licOptions input[type='radio']:checked").val());
-    var strToParse = ($("#licOptions input[type='radio']:checked").val());
-    var licenseOptionParse = strToParse.split(" Days, ");
-    var licensePrice = (licenseOptionParse[1].split(" Ether"));
-    var licPrice = parseFloat(licensePrice[0]);
-    console.log(licPrice);
+    var strToParse = ($("#licOptions input[type='radio']:checked").val());     ///////////////////////////////////////////////
+    var licenseOptionParse = strToParse.split(" Days, ");    //////////////////////////////////////////
+    var licensePrice = (licenseOptionParse[1].split(" Ether"));    ////////////////////////////////////////////////////
+    var licPrice = parseFloat(licensePrice[0]);    ////////////////////////////////////////////////
+    console.log(licPrice);    //////////////////////////////////////////
       });
     });
 
@@ -166,6 +175,7 @@ function createRadioButton(duration, price) {
       theInput = document.createElement("input");
     
       theInput.setAttribute('type',"radio");
+      theInput.setAttribute('name', "options");
       
     ///////////  theInput.setAttribute('name',thisQuestion.radioName);
       theInput.setAttribute('value',licOptions[i]);
