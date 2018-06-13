@@ -273,6 +273,26 @@ $('#EntityName').on('change', function() {
 
 
 
+function myFunction() {
+  console.log("BLAHHHHH");
+  var table = document.getElementById("myTable");
+  console.log(licenseTkid.length);
+  for (i=0; i<10; i++){
+  console.log("MEh");
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+
+  //cell1.innerHTML = licenseCmps[i];
+  //cell2.innerHTML = ownedLicenses[i];
+  //cell3.innerHTML = licenseTkid[i];
+
+  cell1.innerHTML = "Google";
+  cell2.innerHTML = "Chrome";
+  cell3.innerHTML = "575";
+  }
+}
 
 
 
