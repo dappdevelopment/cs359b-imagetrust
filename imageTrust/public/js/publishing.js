@@ -106,6 +106,35 @@ async function init() {
 }
 
 
+function userLogin() {
+  var inpUserName   = document.getElementById("userName").value;
+  var inpPassWord   = document.getElementById("password").value;
+
+  console.log("key", userAccount);
+  let loginInfo = {
+    userName : inpUserName,
+    passHash : inpPassWord
+  }
+  fetch('imagetrust/api/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(loginInfo),
+  })
+  .then(function(res) {
+    if (res.status == 200) {
+      window.location.href="../publish.html";
+    }
+    else {
+      console.log("did not match");
+    }
+  });
+}
+
+
+
+
 function handleFiles(files) {
   for (var i=0; i<files.length; i++) {
     var fileName = files[i].name;
