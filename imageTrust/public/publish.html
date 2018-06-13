@@ -26,8 +26,10 @@
                         <div class = "softwareValidation">
                             <p class="para" >Publish Code on the Blockchain</p>
                             <div class ="but-list">
+                                <div class = "centering">
                                 <div class = "productEntry"><input type = "text" name = "productName" class="productName" autocomplete="off" placeholder="Product Name"><br></div>
                                 <div class= "file-upload"><input type="file" id="publishFile-dialog"><label for="publishFile-dialog">Choose a File</label></div>
+                                </div>    
                                 <div class = "fileDetails">
                                     <p id="fileDetailsText"></p>
                                     <p id="fileName"></p>
@@ -35,19 +37,27 @@
                                     <p id="company"></p>
                                     <p id="timeStamp"></p>
                                 </div>
-                                <button id="validateBTN">Validate and Push</button>
-                            </div>
+                                <div class="centering">
+                                <button id="validateBTN">Validate and Push</button><br><br>
+                                </div>
+                                </div>
+                                <p class="para">Distribute via IPFS</p>
+                                    <p style="text-align: center">Coming Soon!</p><br>
                             <p class="para">Verify Published Code</p>
                                 
                             <div class = "but-list">
+                                <div class="centering">
                                 <div class= "file-upload"><input type="file" id="verifyFile-dialog"><label for="verifyFile-dialog">Choose a File</label></div>
+                                </div>
                                 <div class = "fileDetails">
                                     <p id="vfileDetailsText"></p>
                                     <p id="vfileName"></p>
                                     <p id="vhashValue"></p>
                                 </div>
+                                <div class="centering">
                                 <button id="verifyBTN">Verify File</button>
                                 <div id="verificationResult"></div>
+                                </div>
                             </div>   
                         </div>
                     </div>
@@ -57,8 +67,8 @@
                             <p class="para">Licensing Options Creation</p>
                             <form class="optionsForm">
                                 <div class = "but-list">
-                                    <div class = "productEntry"><input type = "text" name = "productName" class="productName" autocomplete="off" placeholder="Product Name"><br></div>
-                                    <p>Pricing Options</p><br>
+                                    <div class = "productEntry"><input type = "text" name = "productName" class="productName" autocomplete="off" placeholder="Product Name"><br></div><br>
+                                    <p class="sub-para">Pricing Options</p><br>
                                         <div class="top-row">
                                             <div class="field-wrap">
                                                 <label><span class="req">Duration (months)</span></label>
@@ -99,7 +109,7 @@
                     <div class="column3">
 			            <div class="softwareValidation">
                             <p class="para">Software Publishing Stats</p>
-                            <p class="stat-para">Recently Published Packages</p>
+                            <p class="sub-para" style="text-align:center;">Recently Published Packages</p>
                             <div class="lastPublished" id="lastPublishedFiles">
 
                             </div>
