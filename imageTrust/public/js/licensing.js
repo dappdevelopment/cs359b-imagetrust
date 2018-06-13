@@ -5,7 +5,7 @@ async function init() {
     console.log("Using web3 version: " + Web3.version);
     if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
     web3 = new Web3(web3.currentProvider); // MetaMask injected Ethereum provider
-
+/*----------------------------------------------------------
     // Get the account of the user from metamask
     const userAccounts = await web3.eth.getAccounts(); // resolves on an array of accounts
     userAccount = userAccounts[0];   
@@ -28,7 +28,7 @@ async function init() {
 
     // Register contract's event handlers
     //contractEvents(contractData.abi, networkId);
-
+----------------------------------------------------------*/
     $(document).ready(function(){
       fetch('imagetrust/api/getCompanies', {
         method: 'POST',
@@ -73,10 +73,19 @@ async function init() {
         .then(function(jres) {
           console.log("soft");
           console.log(jres);
+          console.log(jres.software);
+
+
+var uniqueSoftwares = [];       /////////////////////////////////////////////////
+$.each(jres.software, function(i, el){    ////////////////////////////////////////////////
+    if($.inArray(el, uniqueSoftwares) === -1) uniqueSoftwares.push(el);    ////////////////////////////////////
+});     //////////////////////////////////
+console.log(uniqueSoftwares);    //////////////////////////////////////////
+
 
           var productcounter = 0;
           if(productcounter<=0){
-            $.each(jres.software, function(val, text) {
+            $.each(uniqueSoftwares, function(val, text) {    /////////////////////////////////////////
               console.log("soft here");
               $('#licproductName').append( $('<option></option>').val(val).html(text) );
               productcounter++;  
@@ -114,6 +123,11 @@ async function init() {
       });
       $("#licOptions").change(function()  {
     console.log($("#licOptions input[type='radio']:checked").val());
+    var strToParse = ($("#licOptions input[type='radio']:checked").val());     ///////////////////////////////////////////////
+    var licenseOptionParse = strToParse.split(" Days, ");    //////////////////////////////////////////
+    var licensePrice = (licenseOptionParse[1].split(" Ether"));    ////////////////////////////////////////////////////
+    var licPrice = parseFloat(licensePrice[0]);    ////////////////////////////////////////////////
+    console.log(licPrice);    //////////////////////////////////////////
       });
     });
 
@@ -161,6 +175,7 @@ function createRadioButton(duration, price) {
       theInput = document.createElement("input");
     
       theInput.setAttribute('type',"radio");
+      theInput.setAttribute('name', "options");
       
     ///////////  theInput.setAttribute('name',thisQuestion.radioName);
       theInput.setAttribute('value',licOptions[i]);
@@ -192,12 +207,13 @@ function createRadioButton(duration, price) {
 
 async function purchaseLicense() {
   if (typeof web3 == 'undefined') throw 'No web3 detected. Is Metamask/Mist being used?';
-
+/*-----------------------------------------------------------------
   initVals = await init("contractJSON/licenseToken.json");
 
   web3 = initVals.web3_; // Ethereum provider injected by MetaMask
   var userAccount = initVals.userAccount_;
   var contract = initVals.contract_;
+  ---------------------------------------------------------------*/
 console.log("Is it here");
   $("#companyName").change(function() {
   var sel = document.getElementById("companyName");
