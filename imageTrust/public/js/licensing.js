@@ -5,6 +5,9 @@ var software = null;
 var duration = null;
 var price = null;
 var ownedLicenses = [];
+var licenseCmps = [];
+var licenseEdts = [];
+var licenseTkid = [];
 
 async function init() {
   console.log("Using web3 version: " + Web3.version);
@@ -141,23 +144,41 @@ async function init() {
 async function getLicenses() {
   await contract.methods.getLicenses().call({from: userAccount})
     .then(function(lics) {
-      console.log("license info");
-      console.log(lics);
-      console.log(lics[0]);
-      console.log(web3.utils.hexToAscii(lics[0].substring(0,14)));
-      console.log(typeof(web3.utils.hexToAscii(lics[0])));
       ownedLicenses = [];
+      licenseCmps = [];
+      licenseEdts = [];
+      licenseTkid = [];
+
+      console.log(lics[0]);
       var i=0;
       var j=0;
-      for (i=0; i<lics.length; i++) {
-	j = lics[i].length-1;
-	while (lics[i].charAt(j) == 0) {
+      for (i=0; i<lics[0].length; i++) {
+        console.log(i);
+	j = lics[0][i].length-1;
+	while (lics[0][i].charAt(j) == 0) {
 	  j = j-1;
 	}
-	ownedLicenses.push(web3.utils.toAscii(lics[0].substring(0,j+1)));
-	console.log(web3.utils.toAscii(lics[0].substring(0,j+1)));
+	ownedLicenses.push(web3.utils.toAscii(lics[0][i].substring(0,j+1)));
+        console.log(web3.utils.toAscii(lics[0][i].substring(0,j+1)));
+
+	j = lics[1][i].length-1;
+	while (lics[1][i].charAt(j) == 0) {
+	  j = j-1;
+	}
+	licenseCmps.push(web3.utils.toAscii(lics[1][i].substring(0,j+1)));
+        console.log("date", lics[2][i]);
+        var date = new Date(lics[2][i]);
+        licenseEdts.push(date.toLocaleDateString());
+        console.log(date.getMonth());
+        licenseTkid.push(lics[3][i]);
       }
+      console.log(ownedLicenses);
+      console.log(licenseCmps);
+      console.log(licenseEdts);
+      console.log(licenseTkid);
+
     });
+  $(".licOwnedList").html(ownedLicenses);
   console.log(ownedLicenses);
 }
  
